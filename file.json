@@ -4,10 +4,9 @@
     "title": "Gold Necklace",
     "category": "Necklace",
     "price": 250,
-  "image": ["../jewelry-store/images/Bracelets/1.jpg",
-"../images/Bracelet/1."
-],
-
+    "images": [
+      "./images/Necklaces/1.jpg"
+    ],
     "description": "Elegant 18K gold necklace with a classic design.",
     "stock_quantity": 20,
     "rating": 4.5
@@ -17,7 +16,11 @@
     "title": "Pearl Necklace",
     "category": "Necklace",
     "price": 300,
-    "image": "https://picsum.photos/seed/jewel4/400/400",
+    "images": [
+      "./images/Necklaces/2-1.jpg",
+      "./images/Necklaces/2-2.webp",
+      "./images/Necklaces/2-3.jpg"
+    ],
     "description": "Classic pearl necklace with a modern touch.",
     "stock_quantity": 15,
     "rating": 4.2
@@ -27,7 +30,9 @@
     "title": "Platinum Necklace",
     "category": "Necklace",
     "price": 620,
-    "image": "https://picsum.photos/seed/jewel13/400/400",
+    "images": [
+      "./images/Necklaces/3.jpg"
+    ],
     "description": "Premium platinum necklace with sleek design.",
     "stock_quantity": 8,
     "rating": 4.8
@@ -37,7 +42,10 @@
     "title": "Layered Necklace",
     "category": "Necklace",
     "price": 210,
-    "image": "https://picsum.photos/seed/jewel17/400/400",
+    "images": [
+      "./images/Necklaces/4-1.jpg",
+      "./images/Necklaces/4-2.jpg"
+    ],
     "description": "Modern layered necklace with elegant chains.",
     "stock_quantity": 25,
     "rating": 4.3
@@ -47,7 +55,10 @@
     "title": "Choker Necklace",
     "category": "Necklace",
     "price": 160,
-    "image": "https://picsum.photos/seed/jewel21/400/400",
+    "images": [
+      "./images/Necklaces/5-1.jpg",
+      "./images/Necklaces/5-2.jpg"
+    ],
     "description": "Fashionable choker necklace for trendy looks.",
     "stock_quantity": 30,
     "rating": 4.1
@@ -57,7 +68,10 @@
     "title": "Heart Necklace",
     "category": "Necklace",
     "price": 200,
-    "image": "https://picsum.photos/seed/jewel25/400/400",
+    "images": [
+      "./images/Necklaces/6-1.jpg",
+      "./images/Necklaces/6-2.jpg"
+    ],
     "description": "Heart-shaped necklace perfect as a gift.",
     "stock_quantity": 18,
     "rating": 4.6
@@ -67,7 +81,10 @@
     "title": "Pendant Necklace",
     "category": "Necklace",
     "price": 240,
-    "image": "https://picsum.photos/seed/jewel29/400/400",
+    "images": [
+      "./images/Necklaces/7-1.jpg",
+      "./images/Necklaces/7-2.jpg"
+    ],
     "description": "Pendant necklace with elegant chain.",
     "stock_quantity": 22,
     "rating": 4.4
@@ -77,7 +94,10 @@
     "title": "Opal Necklace",
     "category": "Necklace",
     "price": 280,
-    "image": "https://picsum.photos/seed/jewel31/400/400",
+    "images": [
+      "./images/Necklaces/8-1.jpg",
+      "./images/Necklaces/8-2.jpg"
+    ],
     "description": "Delicate opal necklace with shimmering stones.",
     "stock_quantity": 25,
     "rating": 4.3
@@ -87,7 +107,10 @@
     "title": "Charm Necklace",
     "category": "Necklace",
     "price": 220,
-    "image": "https://picsum.photos/seed/jewel33/400/400",
+    "images": [
+      "./images/Necklaces/9-1.jpg",
+      "./images/Necklaces/9-2.jpg"
+    ],
     "description": "Fun charm necklace with customizable pendants.",
     "stock_quantity": 30,
     "rating": 4.2
@@ -97,13 +120,16 @@
     "title": "Silver Pendant",
     "category": "Necklace",
     "price": 190,
-    "image": "https://picsum.photos/seed/jewel39/400/400",
+    "images": [
+      "./images/Necklaces/10-1.jpg",
+      "./images/Necklaces/10-2.jpg"
+    ],
     "description": "Simple silver pendant necklace for everyday elegance.",
     "stock_quantity": 35,
     "rating": 4.1
   },
 
- {
+  {
     "id": 11,
     "title": "Princess Cut Diamond Ring",
     "category": "Ring",
@@ -379,27 +405,24 @@
   },
   {
     "id": 30,
-    "title": "Nura Reef bangle",
+    "title": "Diamond Bracelet",
     "category": "Bracelet",
     "price": 450,
-               "image": [
- "./images/Bracelets/25.jpg",
-        "./images/Bracelets/26.jpg"
-
-],
+    "images": [".//images//Earrings//Diamond Bracelet.jpg",
+        ".//images//Earrings//Diamond Bracelet2.jpg"
+    ],
     "description": "Luxury diamond bracelet with sparkling finish.",
     "stock_quantity": 10,
     "rating": 4.9
   },
-
-
 
   {
     "id": 31,
     "title": "Gold Earrings",
     "category": "Earrings",
     "price": 180,
-    "image": "../Jewelry-Store/images/Earrings/Gold Earrings1.jpg",
+    "images": [".//images//Earrings//Gold Earrings1.jpg",
+  ".//images//Earrings//Gold Earrings2.jpg"],
     "description": "Minimal gold earrings with elegant finish.",
     "stock_quantity": 25,
     "rating": 4.3
@@ -409,7 +432,9 @@
     "title": "Stud Earrings",
     "category": "Earrings",
     "price": 90,
-    "image": "../Jewelry-Store/images/Earrings/Stud Earrings1.jpg",
+    "images":[ ".//images//Earrings//Stud Earrings1.jpg",
+    ".//images//Earrings//Stud Earrings2.jpg"
+    ],
     "description": "Simple stud earrings for daily use.",
     "stock_quantity": 40,
     "rating": 4.1
@@ -419,7 +444,9 @@
     "title": "Hoop Earrings",
     "category": "Earrings",
     "price": 110,
-    "image": "../Jewelry-Store/images/Earrings/Hoop Earrings1.jpg",
+    "images":[ ".//images//Earrings//Hoop Earrings1.jpg",
+    ".//images//Earrings//Hoop Earrings2.jpg"
+    ],
     "description": "Trendy hoop earrings for modern style.",
     "stock_quantity": 30,
     "rating": 4.4
@@ -430,8 +457,8 @@
     "category": "Earrings",
     "price": 130,
     "images": [
-      "../Jewelry-Store/images/Earrings/Crystal Earrings1.jpg",
-      "../Jewelry-Store/images/Earrings/Crystal Earrings2.jpg"
+      ".//images//Earrings//Crystal Earrings1.jpg",
+      ".//images//Earrings//Crystal Earrings2.jpg"
     ],
     "description": "Shiny crystal earrings for evening outfits.",
     "stock_quantity": 20,
@@ -443,8 +470,8 @@
   "category": "Earrings",
   "price": 170,
   "images": [
-    "../Jewelry-Store/images/Earrings/Drop Earrings1.jpg",
-    "../Jewelry-Store/images/Earrings/DropEarrings2.jpg"
+    ".//images//Earrings//Drop Earrings1.jpg",
+    ".//images//Earrings//Drop Earrings2.jpg"
   ],
   "description": "Elegant drop earrings for special events.",
   "stock_quantity": 15,
@@ -457,8 +484,8 @@
     "category": "Earrings",
     "price": 140,
     "images": [
-      "./images/Earrings/Vintage Earrings1.jpg",
-      "./images/Earrings/Vintage Earrings2.jpg"
+      ".//images//Earrings//Vintage Earrings1.jpg",
+      ".//images//Earrings//Vintage Earrings2.jpg"
     ],
     "description": "Vintage style earrings with classic details.",
     "stock_quantity": 18,
@@ -470,8 +497,8 @@
     "category": "Earrings",
     "price": 220,
     "images":[
-      "./images/Earrings/Statement Earrings1.jpg",
-      "./images/Earrings/Statement Earrings2.jpg"
+      ".//images//Earrings//Statement Earrings1.jpg",
+      ".//images//Earrings//Statement Earrings2.jpg"
     ],
     "description": "Bold statement earrings for standout looks.",
     "stock_quantity": 12,
@@ -483,8 +510,8 @@
     "category": "Earrings",
     "price": 150,
     "images":[
-      "./images/Earrings/Pearl Earrings1.jpg",
-      "./images/Earrings/Pearl Earrings2.jpg"
+      ".//images//Earrings//Pearl Earrings1.jpg",
+      ".//images//Earrings//Pearl Earrings2.jpg"
     ],
     "description": "Elegant pearl earrings perfect for formal occasions.",
     "stock_quantity": 40,
@@ -495,7 +522,10 @@
     "title": "Diamond Stud Earrings",
     "category": "Earrings",
     "price": 500,
-    "image": "https://picsum.photos/seed/jewel38/400/400",
+    "images":[
+      ".//images//Earrings//Diamond Stud Earrings1.jpg",
+      ".//images//Earrings//Diamond Stud Earrings2.jpg"
+    ],
     "description": "Classic diamond stud earrings with high quality.",
     "stock_quantity": 12,
     "rating": 4.9
@@ -505,7 +535,10 @@
     "title": "Elegant Earrings",
     "category": "Earrings",
     "price": 200,
-    "image": "https://picsum.photos/seed/jewel43/400/400",
+    "images": [
+      "..//Jewelry-Store//images//Earrings//Elegant Earrings1.jpg",
+      "..//Jewelry-Store//images//Earrings//Elegant Earrings2.jpg"
+    ],
     "description": "Elegant earrings with modern design for every occasion.",
     "stock_quantity": 20,
     "rating": 4.4
