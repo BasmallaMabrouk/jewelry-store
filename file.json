@@ -1,5 +1,4 @@
 [
-  // Necklaces (10)
   {
     "id": 1,
     "title": "Gold Necklace",
@@ -101,7 +100,6 @@
     "rating": 4.1
   },
 
-  // Rings (10)
   {
     "id": 11,
     "title": "Princess Cut Diamond Ring",
@@ -240,7 +238,7 @@
     "rating": 4.6
   },
 
-  // Bracelets (10)
+
   {
     "id": 21,
     "title": "Silver Bracelet",
@@ -336,19 +334,21 @@
     "title": "Diamond Bracelet",
     "category": "Bracelet",
     "price": 450,
-    "image": "https://picsum.photos/seed/jewel42/400/400",
+    "images": [".//images//Earrings//Diamond Bracelet.jpg",
+        ".//images//Earrings//Diamond Bracelet2.jpg"
+    ],
     "description": "Luxury diamond bracelet with sparkling finish.",
     "stock_quantity": 10,
     "rating": 4.9
   },
 
-  // Earrings (10)
   {
     "id": 31,
     "title": "Gold Earrings",
     "category": "Earrings",
     "price": 180,
-    "image": "https://picsum.photos/seed/jewel5/400/400",
+    "images": [".//images//Earrings//Gold Earrings1.jpg",
+  ".//images//Earrings//Gold Earrings2.jpg"],
     "description": "Minimal gold earrings with elegant finish.",
     "stock_quantity": 25,
     "rating": 4.3
@@ -358,7 +358,9 @@
     "title": "Stud Earrings",
     "category": "Earrings",
     "price": 90,
-    "image": "https://picsum.photos/seed/jewel8/400/400",
+    "images":[ ".//images//Earrings//Stud Earrings1.jpg",
+    ".//images//Earrings//Stud Earrings2.jpg"
+    ],
     "description": "Simple stud earrings for daily use.",
     "stock_quantity": 40,
     "rating": 4.1
@@ -368,7 +370,9 @@
     "title": "Hoop Earrings",
     "category": "Earrings",
     "price": 110,
-    "image": "https://picsum.photos/seed/jewel12/400/400",
+    "images":[ ".//images//Earrings//Hoop Earrings1.jpg",
+    ".//images//Earrings//Hoop Earrings2.jpg"
+    ],
     "description": "Trendy hoop earrings for modern style.",
     "stock_quantity": 30,
     "rating": 4.4
@@ -378,27 +382,37 @@
     "title": "Crystal Earrings",
     "category": "Earrings",
     "price": 130,
-    "image": "https://picsum.photos/seed/jewel16/400/400",
+    "images": [
+      ".//images//Earrings//Crystal Earrings1.jpg",
+      ".//images//Earrings//Crystal Earrings2.jpg"
+    ],
     "description": "Shiny crystal earrings for evening outfits.",
     "stock_quantity": 20,
     "rating": 4.5
   },
-  {
-    "id": 35,
-    "title": "Drop Earrings",
-    "category": "Earrings",
-    "price": 170,
-    "image": "https://picsum.photos/seed/jewel20/400/400",
-    "description": "Elegant drop earrings for special events.",
-    "stock_quantity": 15,
-    "rating": 4.6
-  },
+ {
+  "id": 35,
+  "title": "Drop Earrings",
+  "category": "Earrings",
+  "price": 170,
+  "images": [
+    ".//images//Earrings//Drop Earrings1.jpg",
+    ".//images//Earrings//Drop Earrings2.jpg"
+  ],
+  "description": "Elegant drop earrings for special events.",
+  "stock_quantity": 15,
+  "rating": 4.6
+},
+
   {
     "id": 36,
     "title": "Vintage Earrings",
     "category": "Earrings",
     "price": 140,
-    "image": "https://picsum.photos/seed/jewel24/400/400",
+    "images": [
+      ".//images//Earrings//Vintage Earrings1.jpg",
+      ".//images//Earrings//Vintage Earrings2.jpg"
+    ],
     "description": "Vintage style earrings with classic details.",
     "stock_quantity": 18,
     "rating": 4.3
@@ -408,7 +422,10 @@
     "title": "Statement Earrings",
     "category": "Earrings",
     "price": 220,
-    "image": "https://picsum.photos/seed/jewel28/400/400",
+    "images":[
+      ".//images//Earrings//Statement Earrings1.jpg",
+      ".//images//Earrings//Statement Earrings2.jpg"
+    ],
     "description": "Bold statement earrings for standout looks.",
     "stock_quantity": 12,
     "rating": 4.7
@@ -418,7 +435,10 @@
     "title": "Pearl Earrings",
     "category": "Earrings",
     "price": 150,
-    "image": "https://picsum.photos/seed/jewel34/400/400",
+    "images":[
+      ".//images//Earrings//Pearl Earrings1.jpg",
+      ".//images//Earrings//Pearl Earrings2.jpg"
+    ],
     "description": "Elegant pearl earrings perfect for formal occasions.",
     "stock_quantity": 40,
     "rating": 4.5
@@ -428,7 +448,10 @@
     "title": "Diamond Stud Earrings",
     "category": "Earrings",
     "price": 500,
-    "image": "https://picsum.photos/seed/jewel38/400/400",
+    "images":[
+      ".//images//Earrings//Diamond Stud Earrings1.jpg",
+      ".//images//Earrings//Diamond Stud Earrings2.jpg"
+    ],
     "description": "Classic diamond stud earrings with high quality.",
     "stock_quantity": 12,
     "rating": 4.9
@@ -438,7 +461,10 @@
     "title": "Elegant Earrings",
     "category": "Earrings",
     "price": 200,
-    "image": "https://picsum.photos/seed/jewel43/400/400",
+    "images": [
+      "..//Jewelry-Store//images//Earrings//Elegant Earrings1.jpg",
+      "..//Jewelry-Store//images//Earrings//Elegant Earrings2.jpg"
+    ],
     "description": "Elegant earrings with modern design for every occasion.",
     "stock_quantity": 20,
     "rating": 4.4
