@@ -1,11 +1,13 @@
 [
-  // Necklaces (10)
   {
     "id": 1,
     "title": "Gold Necklace",
     "category": "Necklace",
     "price": 250,
-    "image": "https://picsum.photos/seed/jewel1/400/400",
+  "image": ["../jewelry-store/images/Bracelets/1.jpg",
+"../images/Bracelet/1."
+],
+
     "description": "Elegant 18K gold necklace with a classic design.",
     "stock_quantity": 20,
     "rating": 4.5
@@ -101,15 +103,14 @@
     "rating": 4.1
   },
 
-  // Rings (10)
-  {
+ {
     "id": 11,
     "title": "Princess Cut Diamond Ring",
     "category": "Ring",
     "price": 680,
     "images": [
-        "../images/10.jpg",
-        "./images/11.jpg"
+        "./images/Rings/10.jpg",
+        "./images/Rings/11.jpg"
     ],
     "description": "Brilliant princess cut diamond with maximum sparkle and modern square shape.",
     "stock_quantity": 9,
@@ -121,9 +122,9 @@
     "category": "Ring",
     "price": 590,
     "images": [
-        "./images/20.jfif",
-        "./images/21.jfif",
-        "./images/22.jfif"
+        "./images/Rings/20.jfif",
+        "./images/Rings/21.jfif",
+        "./images/Rings/22.jfif"
     ],
     "description": "Elegant oval shape diamond that elongates the finger beautifully.",
     "stock_quantity": 11,
@@ -135,9 +136,9 @@
     "category": "Ring",
     "price": 620,
     "images": [
-        "./images/30.jpg",
-        "./images/31.jpg",
-        "./images/32.jpg"
+        "./images/Rings/30.jpg",
+        "./images/Rings/31.jpg",
+        "./images/Rings/32.jpg"
     ],
     "description": "Soft pillow-like cushion cut diamond for vintage romantic look.",
     "stock_quantity": 7,
@@ -149,8 +150,8 @@
     "category": "Ring",
     "price": 510,
     "images": [
-        "./images/40.jpg",
-        "./images/41.jpg"
+        "./images/Rings/40.jpg",
+        "./images/Rings/41.jpg"
     ],
     "description": "Teardrop pear shape diamond, unique and flattering on any hand.",
     "stock_quantity": 13,
@@ -162,9 +163,9 @@
     "category": "Ring",
     "price": 570,
     "images": [
-        "./images/50.jpg",
-        "./images/51.jpg",
-        "./images/52.jpg"
+        "./images/Rings50.jpg",
+        "./images/Rings/51.jpg",
+        "./images/Rings/52.jpg"
     ],
     "description": "Elongated marquise cut for bold and dramatic sparkle.",
     "stock_quantity": 6,
@@ -176,9 +177,9 @@
     "category": "Ring",
     "price": 750,
     "images": [
-        "./images/60.jpg",
-        "./images/61.jpg",
-        "./images/62.jpg"
+        "./images/Rings/60.jpg",
+        "./images/Rings/61.jpg",
+        "./images/Rings/62.jpg"
     ],
     "description": "Center diamond surrounded by halo of smaller diamonds for extra brilliance.",
     "stock_quantity": 5,
@@ -190,7 +191,7 @@
     "category": "Ring",
     "price": 890,
     "images": [
-        "./images/70.jpg"
+        "./images/Rings/70.jpg"
     ],
     "description": "Symbolic three-stone design representing past, present, and future.",
     "stock_quantity": 4,
@@ -202,9 +203,9 @@
     "category": "Ring",
     "price": 720,
     "images": [
-        "./images/80.webp",
-        "./images/81.webp",
-        "./images/82.webp"
+        "./images/Rings/80.webp",
+        "./images/Rings/81.webp",
+        "./images/Rings/82.webp"
     ],
     "description": "Geometric Art Deco style with intricate milgrain details.",
     "stock_quantity": 8,
@@ -216,9 +217,9 @@
     "category": "Ring",
     "price": 980,
     "images": [
-        "./images/90.jpg",
-        "./images/91.jpg",
-        "./images/92.jpg"
+        "./images/Rings/90.jpg",
+        "./images/Rings/91.jpg",
+        "./images/Rings/92.jpg"
     ],
     "description": "Classic single diamond in timeless platinum setting.",
     "stock_quantity": 3,
@@ -230,94 +231,134 @@
     "category": "Ring",
     "price": 640,
     "images": [
-        "./images/100.jpg",
-        "./images/101.jpg",
-        "./images/102.jpg",
-        "./images/103.jpg"
+        "./images/Rings/100.jpg",
+        "./images/Rings101.jpg",
+        "./images/Rings102.jpg",
+        "./images/Rings/103.jpg"
     ],
     "description": "Rectangular radiant cut with brilliant facets for fiery sparkle.",
     "stock_quantity": 10,
     "rating": 4.6
   },
 
-  // Bracelets (10)
+ 
   {
     "id": 21,
-    "title": "Silver Bracelet",
+    "title": "Matrix Tennis bracelet",
     "category": "Bracelet",
     "price": 120,
-    "image": "https://picsum.photos/seed/jewel3/400/400",
-    "description": "Stylish silver bracelet for everyday wear.",
+    "image": [
+ "./images/Bracelets/1.jpg",
+        "./images/Bracelets/2.jpg",
+ "./images/Bracelets/3.jpg"
+
+],
+    "description": "white silver-tone brass glass crystal embellishment polished finish claw/prong setting Store your jewellery in the original box or a fabric pouch to protect it and always lay it flat.",
     "stock_quantity": 35,
     "rating": 4.3
   },
   {
     "id": 22,
-    "title": "Charm Bracelet",
+    "title": "triple-band bracelet",
     "category": "Bracelet",
     "price": 140,
-    "image": "https://picsum.photos/seed/jewel7/400/400",
+   "image": [
+ "../images/Bracelets/4.jpg",
+        "./images/Bracelets/5.jpg"
+
+],
     "description": "Beautiful charm bracelet with customizable charms.",
     "stock_quantity": 28,
     "rating": 4.4
   },
   {
     "id": 23,
-    "title": "Gold Bangle",
+    "title": "Gold Monica Vinader",
     "category": "Bracelet",
     "price": 230,
-    "image": "https://picsum.photos/seed/jewel11/400/400",
+     "image": [
+ "./images/Bracelets/6.jpg",
+        "./images/Bracelets/7.jpg",
+ "./images/Bracelets/8.jpg"
+
+],
     "description": "Classic gold bangle with smooth texture.",
     "stock_quantity": 15,
     "rating": 4.6
   },
   {
     "id": 24,
-    "title": "Cuff Bracelet",
+    "title": "triple-band bracelet",
     "category": "Bracelet",
     "price": 190,
-    "image": "https://picsum.photos/seed/jewel23/400/400",
+         "image": [
+ "./images/Bracelets/10.jpg",
+        "./images/Bracelets/9.jpg",
+ "./images/Bracelets/11.jpg"
+
+],
     "description": "Stylish cuff bracelet with modern design.",
     "stock_quantity": 20,
     "rating": 4.5
   },
   {
     "id": 25,
-    "title": "Beaded Bracelet",
+    "title": "Monica Vinader",
     "category": "Bracelet",
     "price": 80,
-    "image": "https://picsum.photos/seed/jewel15/400/400",
+      "image": [
+ "./images/Bracelets/12.jpg",
+        "./images/Bracelets/13.jpg"
+
+],
     "description": "Colorful beaded bracelet for casual wear.",
     "stock_quantity": 40,
     "rating": 4.1
-  },
+  }
+  ,
+
+
   {
     "id": 26,
-    "title": "Infinity Bracelet",
+    "title": "CharriolBracelet",
     "category": "Bracelet",
     "price": 150,
-    "image": "https://picsum.photos/seed/jewel19/400/400",
+       "image": [
+ "./images/Bracelets/14.jpg",
+        "./images/Bracelets/15.jpg"
+
+],
     "description": "Infinity symbol bracelet with modern style.",
     "stock_quantity": 22,
     "rating": 4.4
   },
   {
     "id": 27,
-    "title": "Leather Bracelet",
+    "title": "paperclip chain bracelet",
     "category": "Bracelet",
     "price": 70,
-    "image": "https://picsum.photos/seed/jewel27/400/400",
+       "image": [
+ "./images/Bracelets/16.jpg",
+        "./images/Bracelets/17.jpg",
+ "./images/Bracelets/18.jpg"
+
+],
     "description": "Leather bracelet with metal clasp.",
     "stock_quantity": 30,
     "rating": 4.2
   },
   {
     "id": 28,
-    "title": "Rose Gold Bracelet",
+    "title": "Rockstud leather bracelet",
     "category": "Bracelet",
     "price": 210,
-    "image": "https://picsum.photos/seed/jewel36/400/400",
-    "description": "Stylish rose gold bracelet with smooth finish.",
+           "image": [
+ "./images/Bracelets/19.jpg",
+        "./images/Bracelets/20.jpg",
+ "./images/Bracelets/21.jpg"
+
+],
+    "description": "Stylish white gold bracelet with smooth finish.",
     "stock_quantity": 20,
     "rating": 4.4
   },
@@ -326,29 +367,39 @@
     "title": "Gold Bracelet",
     "category": "Bracelet",
     "price": 200,
-    "image": "https://picsum.photos/seed/jewel41/400/400",
-    "description": "Elegant gold bracelet for daily wear.",
+             "image": [
+ "./images/Bracelets/22.jpg",
+        "./images/Bracelets/23.jpg",
+ "./images/Bracelets/24.jpg"
+
+],
+    "description": "Chroma zirconium-embelllished bangle.",
     "stock_quantity": 18,
     "rating": 4.5
   },
   {
     "id": 30,
-    "title": "Diamond Bracelet",
+    "title": "Nura Reef bangle",
     "category": "Bracelet",
     "price": 450,
-    "image": "https://picsum.photos/seed/jewel42/400/400",
+               "image": [
+ "./images/Bracelets/25.jpg",
+        "./images/Bracelets/26.jpg"
+
+],
     "description": "Luxury diamond bracelet with sparkling finish.",
     "stock_quantity": 10,
     "rating": 4.9
   },
 
-  // Earrings (10)
+
+
   {
     "id": 31,
     "title": "Gold Earrings",
     "category": "Earrings",
     "price": 180,
-    "image": "https://picsum.photos/seed/jewel5/400/400",
+    "image": "../Jewelry-Store/images/Earrings/Gold Earrings1.jpg",
     "description": "Minimal gold earrings with elegant finish.",
     "stock_quantity": 25,
     "rating": 4.3
@@ -358,7 +409,7 @@
     "title": "Stud Earrings",
     "category": "Earrings",
     "price": 90,
-    "image": "https://picsum.photos/seed/jewel8/400/400",
+    "image": "../Jewelry-Store/images/Earrings/Stud Earrings1.jpg",
     "description": "Simple stud earrings for daily use.",
     "stock_quantity": 40,
     "rating": 4.1
@@ -368,7 +419,7 @@
     "title": "Hoop Earrings",
     "category": "Earrings",
     "price": 110,
-    "image": "https://picsum.photos/seed/jewel12/400/400",
+    "image": "../Jewelry-Store/images/Earrings/Hoop Earrings1.jpg",
     "description": "Trendy hoop earrings for modern style.",
     "stock_quantity": 30,
     "rating": 4.4
@@ -378,27 +429,37 @@
     "title": "Crystal Earrings",
     "category": "Earrings",
     "price": 130,
-    "image": "https://picsum.photos/seed/jewel16/400/400",
+    "images": [
+      "../Jewelry-Store/images/Earrings/Crystal Earrings1.jpg",
+      "../Jewelry-Store/images/Earrings/Crystal Earrings2.jpg"
+    ],
     "description": "Shiny crystal earrings for evening outfits.",
     "stock_quantity": 20,
     "rating": 4.5
   },
-  {
-    "id": 35,
-    "title": "Drop Earrings",
-    "category": "Earrings",
-    "price": 170,
-    "image": "https://picsum.photos/seed/jewel20/400/400",
-    "description": "Elegant drop earrings for special events.",
-    "stock_quantity": 15,
-    "rating": 4.6
-  },
+ {
+  "id": 35,
+  "title": "Drop Earrings",
+  "category": "Earrings",
+  "price": 170,
+  "images": [
+    "../Jewelry-Store/images/Earrings/Drop Earrings1.jpg",
+    "../Jewelry-Store/images/Earrings/DropEarrings2.jpg"
+  ],
+  "description": "Elegant drop earrings for special events.",
+  "stock_quantity": 15,
+  "rating": 4.6
+},
+
   {
     "id": 36,
     "title": "Vintage Earrings",
     "category": "Earrings",
     "price": 140,
-    "image": "https://picsum.photos/seed/jewel24/400/400",
+    "images": [
+      "./images/Earrings/Vintage Earrings1.jpg",
+      "./images/Earrings/Vintage Earrings2.jpg"
+    ],
     "description": "Vintage style earrings with classic details.",
     "stock_quantity": 18,
     "rating": 4.3
@@ -408,7 +469,10 @@
     "title": "Statement Earrings",
     "category": "Earrings",
     "price": 220,
-    "image": "https://picsum.photos/seed/jewel28/400/400",
+    "images":[
+      "./images/Earrings/Statement Earrings1.jpg",
+      "./images/Earrings/Statement Earrings2.jpg"
+    ],
     "description": "Bold statement earrings for standout looks.",
     "stock_quantity": 12,
     "rating": 4.7
@@ -418,7 +482,10 @@
     "title": "Pearl Earrings",
     "category": "Earrings",
     "price": 150,
-    "image": "https://picsum.photos/seed/jewel34/400/400",
+    "images":[
+      "./images/Earrings/Pearl Earrings1.jpg",
+      "./images/Earrings/Pearl Earrings2.jpg"
+    ],
     "description": "Elegant pearl earrings perfect for formal occasions.",
     "stock_quantity": 40,
     "rating": 4.5
