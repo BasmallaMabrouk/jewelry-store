@@ -1,11 +1,12 @@
 [
-  // Necklaces (10)
   {
     "id": 1,
     "title": "Gold Necklace",
     "category": "Necklace",
     "price": 250,
-    "image": "https://picsum.photos/seed/jewel1/400/400",
+    "images": [
+      "./images/Necklaces/1.jpg"
+    ],
     "description": "Elegant 18K gold necklace with a classic design.",
     "stock_quantity": 20,
     "rating": 4.5
@@ -15,7 +16,11 @@
     "title": "Pearl Necklace",
     "category": "Necklace",
     "price": 300,
-    "image": "https://picsum.photos/seed/jewel4/400/400",
+    "images": [
+      "./images/Necklaces/2-1.jpg",
+      "./images/Necklaces/2-2.webp",
+      "./images/Necklaces/2-3.jpg"
+    ],
     "description": "Classic pearl necklace with a modern touch.",
     "stock_quantity": 15,
     "rating": 4.2
@@ -25,7 +30,9 @@
     "title": "Platinum Necklace",
     "category": "Necklace",
     "price": 620,
-    "image": "https://picsum.photos/seed/jewel13/400/400",
+    "images": [
+      "./images/Necklaces/3.jpg"
+    ],
     "description": "Premium platinum necklace with sleek design.",
     "stock_quantity": 8,
     "rating": 4.8
@@ -35,7 +42,10 @@
     "title": "Layered Necklace",
     "category": "Necklace",
     "price": 210,
-    "image": "https://picsum.photos/seed/jewel17/400/400",
+    "images": [
+      "./images/Necklaces/4-1.jpg",
+      "./images/Necklaces/4-2.jpg"
+    ],
     "description": "Modern layered necklace with elegant chains.",
     "stock_quantity": 25,
     "rating": 4.3
@@ -45,7 +55,10 @@
     "title": "Choker Necklace",
     "category": "Necklace",
     "price": 160,
-    "image": "https://picsum.photos/seed/jewel21/400/400",
+    "images": [
+      "./images/Necklaces/5-1.jpg",
+      "./images/Necklaces/5-2.jpg"
+    ],
     "description": "Fashionable choker necklace for trendy looks.",
     "stock_quantity": 30,
     "rating": 4.1
@@ -55,7 +68,10 @@
     "title": "Heart Necklace",
     "category": "Necklace",
     "price": 200,
-    "image": "https://picsum.photos/seed/jewel25/400/400",
+    "images": [
+      "./images/Necklaces/6-1.jpg",
+      "./images/Necklaces/6-2.jpg"
+    ],
     "description": "Heart-shaped necklace perfect as a gift.",
     "stock_quantity": 18,
     "rating": 4.6
@@ -65,7 +81,10 @@
     "title": "Pendant Necklace",
     "category": "Necklace",
     "price": 240,
-    "image": "https://picsum.photos/seed/jewel29/400/400",
+    "images": [
+      "./images/Necklaces/7-1.jpg",
+      "./images/Necklaces/7-2.jpg"
+    ],
     "description": "Pendant necklace with elegant chain.",
     "stock_quantity": 22,
     "rating": 4.4
@@ -75,7 +94,10 @@
     "title": "Opal Necklace",
     "category": "Necklace",
     "price": 280,
-    "image": "https://picsum.photos/seed/jewel31/400/400",
+    "images": [
+      "./images/Necklaces/8-1.jpg",
+      "./images/Necklaces/8-2.jpg"
+    ],
     "description": "Delicate opal necklace with shimmering stones.",
     "stock_quantity": 25,
     "rating": 4.3
@@ -85,7 +107,10 @@
     "title": "Charm Necklace",
     "category": "Necklace",
     "price": 220,
-    "image": "https://picsum.photos/seed/jewel33/400/400",
+    "images": [
+      "./images/Necklaces/9-1.jpg",
+      "./images/Necklaces/9-2.jpg"
+    ],
     "description": "Fun charm necklace with customizable pendants.",
     "stock_quantity": 30,
     "rating": 4.2
@@ -95,21 +120,22 @@
     "title": "Silver Pendant",
     "category": "Necklace",
     "price": 190,
-    "image": "https://picsum.photos/seed/jewel39/400/400",
+    "images": [
+      "./images/Necklaces/10-1.jpg",
+      "./images/Necklaces/10-2.jpg"
+    ],
     "description": "Simple silver pendant necklace for everyday elegance.",
     "stock_quantity": 35,
     "rating": 4.1
   },
-
-  // Rings (10)
   {
     "id": 11,
     "title": "Princess Cut Diamond Ring",
     "category": "Ring",
     "price": 680,
     "images": [
-        "../images/10.jpg",
-        "./images/11.jpg"
+      "../images/10.jpg",
+      "./images/11.jpg"
     ],
     "description": "Brilliant princess cut diamond with maximum sparkle and modern square shape.",
     "stock_quantity": 9,
@@ -121,9 +147,9 @@
     "category": "Ring",
     "price": 590,
     "images": [
-        "./images/20.jfif",
-        "./images/21.jfif",
-        "./images/22.jfif"
+      "./images/20.jfif",
+      "./images/21.jfif",
+      "./images/22.jfif"
     ],
     "description": "Elegant oval shape diamond that elongates the finger beautifully.",
     "stock_quantity": 11,
@@ -135,9 +161,9 @@
     "category": "Ring",
     "price": 620,
     "images": [
-        "./images/30.jpg",
-        "./images/31.jpg",
-        "./images/32.jpg"
+      "./images/30.jpg",
+      "./images/31.jpg",
+      "./images/32.jpg"
     ],
     "description": "Soft pillow-like cushion cut diamond for vintage romantic look.",
     "stock_quantity": 7,
@@ -149,8 +175,8 @@
     "category": "Ring",
     "price": 510,
     "images": [
-        "./images/40.jpg",
-        "./images/41.jpg"
+      "./images/40.jpg",
+      "./images/41.jpg"
     ],
     "description": "Teardrop pear shape diamond, unique and flattering on any hand.",
     "stock_quantity": 13,
@@ -162,9 +188,9 @@
     "category": "Ring",
     "price": 570,
     "images": [
-        "./images/50.jpg",
-        "./images/51.jpg",
-        "./images/52.jpg"
+      "./images/50.jpg",
+      "./images/51.jpg",
+      "./images/52.jpg"
     ],
     "description": "Elongated marquise cut for bold and dramatic sparkle.",
     "stock_quantity": 6,
@@ -176,9 +202,9 @@
     "category": "Ring",
     "price": 750,
     "images": [
-        "./images/60.jpg",
-        "./images/61.jpg",
-        "./images/62.jpg"
+      "./images/60.jpg",
+      "./images/61.jpg",
+      "./images/62.jpg"
     ],
     "description": "Center diamond surrounded by halo of smaller diamonds for extra brilliance.",
     "stock_quantity": 5,
@@ -190,7 +216,7 @@
     "category": "Ring",
     "price": 890,
     "images": [
-        "./images/70.jpg"
+      "./images/70.jpg"
     ],
     "description": "Symbolic three-stone design representing past, present, and future.",
     "stock_quantity": 4,
@@ -202,9 +228,9 @@
     "category": "Ring",
     "price": 720,
     "images": [
-        "./images/80.webp",
-        "./images/81.webp",
-        "./images/82.webp"
+      "./images/80.webp",
+      "./images/81.webp",
+      "./images/82.webp"
     ],
     "description": "Geometric Art Deco style with intricate milgrain details.",
     "stock_quantity": 8,
@@ -216,9 +242,9 @@
     "category": "Ring",
     "price": 980,
     "images": [
-        "./images/90.jpg",
-        "./images/91.jpg",
-        "./images/92.jpg"
+      "./images/90.jpg",
+      "./images/91.jpg",
+      "./images/92.jpg"
     ],
     "description": "Classic single diamond in timeless platinum setting.",
     "stock_quantity": 3,
@@ -230,17 +256,15 @@
     "category": "Ring",
     "price": 640,
     "images": [
-        "./images/100.jpg",
-        "./images/101.jpg",
-        "./images/102.jpg",
-        "./images/103.jpg"
+      "./images/100.jpg",
+      "./images/101.jpg",
+      "./images/102.jpg",
+      "./images/103.jpg"
     ],
     "description": "Rectangular radiant cut with brilliant facets for fiery sparkle.",
     "stock_quantity": 10,
     "rating": 4.6
   },
-
-  // Bracelets (10)
   {
     "id": 21,
     "title": "Silver Bracelet",
@@ -341,8 +365,6 @@
     "stock_quantity": 10,
     "rating": 4.9
   },
-
-  // Earrings (10)
   {
     "id": 31,
     "title": "Gold Earrings",
