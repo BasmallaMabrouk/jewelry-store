@@ -91,6 +91,7 @@ nav div {
     display: flex;
     align-items: center;
     gap: 1vw;
+    
 }
 
 main {
@@ -142,4 +143,146 @@ main .img {
     /* object-fit: cover; */
     /* transform: rotate(270deg); */
 
+}
+
+/* Auth Section */
+/* تنسيق القسم الرئيسي */
+.auth-section {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* الكارت الزجاجي */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05); /* شفافية عالية */
+    backdrop-filter: blur(15px); /* تمويه الخلفية */
+    border: 1px solid rgba(197, 160, 89, 0.3); /* حدود ذهبية خفيفة */
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.auth-title {
+    color: #C5A059; /* ذهبي */
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif; /* يفضل استخدام خط سيريف للفخامة */
+}
+
+.auth-subtitle {
+    color: #f6f0eb;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* تنسيق المدخلات */
+.input-container {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-container label {
+    display: block;
+    color: #f6f0eb;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.input-container input {
+    width: 100%;
+    background: rgba(246, 240, 235, 0.1);
+    border: 1px solid rgba(246, 240, 235, 0.2);
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-container input:focus {
+    border-color: #C5A059; /* يتحول للذهبي عند الكتابة */
+    background: rgba(246, 240, 235, 0.15);
+}
+
+/* الزر الرئيسي */
+.prime-btn {
+    width: 100%;
+    padding: 14px;
+    background: #C5A059;
+    color: #030500;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-top: 10px;
+}
+
+.prime-btn:hover {
+    background: #f6f0eb;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+}
+
+/* التذييل */
+.auth-footer {
+    margin-top: 25px;
+    color: #f6f0eb;
+    font-size: 0.85rem;
+}
+
+.auth-footer a {
+    color: #C5A059;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* زيادة طول الكارت قليلاً في صفحة التسجيل */
+.register-card {
+    max-width: 500px; 
+    padding: 30px 40px;
+}
+
+.input-container input:hover {
+    border-color: rgba(197, 160, 89, 0.5);
+}
+
+/* تنسيقCheckbox إذا أردتِ إضافة "أوافق على الشروط" */
+.terms-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #f6f0eb;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.terms-container input {
+    accent-color: #C5A059; /* تلوين الـ Checkbox بالذهبي */
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 480px) {
+    .glass-card {
+        width: 90%;
+        padding: 20px;
+    }
+    .auth-title {
+        font-size: 1.5rem;
+    }
 }
