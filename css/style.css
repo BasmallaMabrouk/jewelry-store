@@ -10,6 +10,9 @@ body {
         url(../images/GreenBackground.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+   
+    overflow-x: hidden;
+
 }
 
 header {
@@ -285,4 +288,225 @@ main .img {
     .auth-title {
         font-size: 1.5rem;
     }
+}
+
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////*/
+/* --- top catageroy at home''--- */
+.top-categories {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.section-title {
+    color: #033817; 
+    font-family: 'Bitter', serif;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+
+.glass-ribbon-wrapper {
+    width: 100vw; 
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw; 
+    
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 40px 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.category-slider {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+}
+
+
+.glass-ribbon-wrapper:hover .category-slider {
+    animation: slidingTrain 5s ease-in infinite;
+}
+
+@keyframes slidingTrain {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    45% {
+        transform: translateX(100vw); 
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-100vw); 
+        opacity: 0;
+    }
+    65% {
+        transform: translateX(0); 
+        opacity: 1;
+    }
+}
+
+.cat-item {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.circle-box {
+    width: 160px;
+    height: 160px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+.circle-box img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.cat-item h3 {
+    color: #033817;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+}
+.main-footer {
+    width: 100%;
+    background-image: 
+        radial-gradient(circle, rgba(6, 56, 23, 0.9), rgba(3, 5, 0, 1)),
+        url('../images/GreenBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 35px 0;
+    text-align: center;
+    border-top: 2px solid #C5A059;
+}
+
+.main-footer p {
+    color: #C5A059; 
+    font-family: 'Bitter', serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////*/
+/*store*/
+
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+
+.product-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    border-color: #C5A059;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+
+.product-img-box {
+    width: 100%;
+    height: 250px;
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease;
+}
+
+.img-hover {
+    opacity: 0;
+}
+
+.product-card:hover .img-main {
+    opacity: 0;
+}
+
+.product-card:hover .img-hover {
+    opacity: 1;
+}
+
+
+.product-card h3 {
+    color: #C5A059;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-family: 'Bitter', serif;
+}
+
+.product-card p {
+    color: #f6f0eb;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-bottom: 15px;
+    height: 40px; 
+    overflow: hidden;
+}
+
+.price {
+    color: #f6f0eb;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.add-to-cart-btn {
+    background: #C5A059;
+    color: #030500;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background: #f6f0eb;
 }

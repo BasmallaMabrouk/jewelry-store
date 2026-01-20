@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store - Luxury Jewelry</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
+</head>
+<body class="store-page">
+    <header>
+        <img src="../images/logo3.png" alt="Logo">
+    </header>
+    
+    <div class="Bar">
+        <div class="login"><a href="../html/Login.html">Log In</a></div>
+        <nav>
+            <div><a href="../html/Home.html">Home</a></div>
+            <div class="jewelry active"><a href="../html/store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
+            <div class="jewelry"><a href="#">Necklace</a><i class="fa-solid fa-gem icon"></i></div>
+            <div class="jewelry"><a href="#">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
+              <div class="jewelry"><a href="#">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
+            <div class="jewelry"><a href="#">Rings</a><i class="fa-solid fa-gem icon"></i></div>
+        </nav>
+        <div class="cart">Cart <i class="fa-solid fa-cart-arrow-down"></i></div>
+    </div>
+
+    <main class="store-main">
+        <h1 class="section-title">Our Collection</h1>
+        <div id="product-grid" class="product-grid"></div>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2026 Girlsz Power A | B | M | G . All Rights Reserved.</p>
+    </footer>
+
+    <script>
+
+  
+var xhr = new XMLHttpRequest();
+
+
+xhr.open("GET", "../file.json");
+
+// 2 & 3.
+xhr.send();
+
+//4
+xhr.addEventListener('readystatechange', function () {
+  
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        
+      
+        var products = JSON.parse(xhr.responseText);
+        var grid = document.getElementById('product-grid');
+        
+     
+        grid.innerHTML = "";
+
+      
+        for (var product of products) {
+            
+        
+            var mainImg = "";
+            var hoverImg = "";
+            if (product.images.length > 0) {
+                mainImg = product.images[0];
+                hoverImg = product.images[1] ? product.images[1] : product.images[0];
+            }
+
+         
+            var card = `
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <img src="${mainImg}" class="img-main" >
+                        <img src="${hoverImg}" class="img-hover">
+                        
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.title}</h3>
+                        <p class="desc">${product.description}</p>
+                        <div class="price-row">
+                            <span class="price">$${product.price}</span>
+                            <span class="rating">⭐ ${product.rating}</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>`;
+            
+            grid.innerHTML += card;
+        }
+    }
+});
+
+    </script>
+</body>
+</html>
