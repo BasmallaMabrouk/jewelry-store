@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store - Luxury Jewelry</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> -->
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
 </head>
+
 <body class="store-page">
     <header>
         <img src=" ../images/logo3.png" alt="">
         <div class="Bar">
+<<<<<<< HEAD
         <div class="login"><a href="../html/Login.html">Log In</a></div>
         <nav>
+=======
+            <div class="login"><a href="../html/Login.html">Log In</a></div>
+            <nav>
+>>>>>>> 7a07b208366d3de62a256826a4e431a194284b3f
 
             <div><a href="./Home.html">Home</a></div>
             <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
@@ -37,40 +52,40 @@
 
     <script>
 
-  
-var xhr = new XMLHttpRequest();
+
+        var xhr = new XMLHttpRequest();
 
 
-xhr.open("GET", "../file.json");
+        xhr.open("GET", "../file.json");
 
-// 2 & 3.
-xhr.send();
+        // 2 & 3.
+        xhr.send();
 
-//4
-xhr.addEventListener('readystatechange', function () {
-  
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        
-      
-        var products = JSON.parse(xhr.responseText);
-        var grid = document.getElementById('product-grid');
-        
-     
-        grid.innerHTML = "";
+        //4
+        xhr.addEventListener('readystatechange', function () {
 
-      
-        for (var product of products) {
-            
-        
-            var mainImg = "";
-            var hoverImg = "";
-            if (product.images.length > 0) {
-                mainImg = product.images[0];
-                hoverImg = product.images[1] ? product.images[1] : product.images[0];
-            }
+            if (xhr.readyState == 4 && xhr.status == 200) {
 
-         
-            var card = `
+
+                var products = JSON.parse(xhr.responseText);
+                var grid = document.getElementById('product-grid');
+
+
+                grid.innerHTML = "";
+
+
+                for (var product of products) {
+
+
+                    var mainImg = "";
+                    var hoverImg = "";
+                    if (product.images.length > 0) {
+                        mainImg = product.images[0];
+                        hoverImg = product.images[1] ? product.images[1] : product.images[0];
+                    }
+
+
+                    var card = `
                 <div class="product-card">
                     <div class="product-img-box">
                         <img src="${mainImg}" class="img-main" >
@@ -87,12 +102,13 @@ xhr.addEventListener('readystatechange', function () {
                         <button class="add-to-cart-btn">Add to Cart</button>
                     </div>
                 </div>`;
-            
-            grid.innerHTML += card;
-        }
-    }
-});
+
+                    grid.innerHTML += card;
+                }
+            }
+        });
 
     </script>
 </body>
+
 </html>
