@@ -297,7 +297,17 @@ main .img {
         font-size: 1.5rem;
     }
 }
+.login-link {
+    color: #f6f0eb; /* اللون الكريمي بتاعك */
+    text-decoration: none; /* شيل الخط اللي تحت الكلمة */
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+}
 
+.login-link:hover {
+    color: #C5A059; /* يقلب ذهبي لما تقفي عليه */
+}
 
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* --- top catageroy at home''--- */
