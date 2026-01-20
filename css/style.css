@@ -53,11 +53,20 @@ header img {
 
 
 nav {
-    width: 50%;
+    width: 40%;
     display: flex;
-    gap: 5vw;
+    gap: 5px;
+    /* justify-content: space-between; */
     align-items: center;
+    /* background-color: white; */
 
+}
+nav div {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 5px; */
 }
 
 
@@ -85,13 +94,7 @@ nav .jewelry:hover .icon {
     color: #f6f0eb;
 }
 
-nav div {
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
+
 
 
 .login,
@@ -413,7 +416,7 @@ main .img {
 .main-footer {
     width: 100%;
     background-image: 
-        radial-gradient(circle, rgba(6, 56, 23, 0.9), rgba(3, 5, 0, 1)),
+        radial-gradient(circle, rgba(6, 56, 23, 0.6), rgba(3, 5, 0, 0.8)),
         url('../images/GreenBackground.jpg');
     background-size: cover;
     background-position: center;
