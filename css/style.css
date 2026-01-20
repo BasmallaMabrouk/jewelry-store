@@ -10,15 +10,22 @@ body {
         url(../images/GreenBackground.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-   
-    overflow-x: hidden;
-
 }
 
 header {
+    background-image:
+        radial-gradient(circle, rgba(6, 56, 23, 0.557), rgba(3, 5, 0, 0.5)),
+        url(../images/GreenBackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 header img {
@@ -48,7 +55,7 @@ header img {
 nav {
     width: 50%;
     display: flex;
-    gap: 5wv;
+    gap: 5vw;
     align-items: center;
 
 }
@@ -58,7 +65,7 @@ nav a {
     color: #f6f0eb;
     text-decoration: none;
     font-size: 20px;
-    position: relative;
+    /* position: relative; */
 }
 
 .Bar nav div .icon {
@@ -291,8 +298,6 @@ main .img {
 }
 
 
-
-
 /*//////////////////////////////////////////////////////////////////////////////*/
 /* --- top catageroy at home''--- */
 .top-categories {
@@ -509,4 +514,46 @@ main .img {
 
 .add-to-cart-btn:hover {
     background: #f6f0eb;
+}
+
+/* **************ٌRings***************************** */
+.cards-rings{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5vw;
+    
+}
+
+.cards-rings figure{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(246, 240, 235, 0.2);
+    box-shadow: 10px 10px 0 rgba(174, 106, 51, 0.2);
+    position: relative;
+    text-align: center;
+}
+
+.cards-rings img{
+    width: 100%;
+    height: 400px ;
+}
+
+.cards-rings .rings a{
+    /* width: 0;
+    height: 0;
+    opacity: 0;
+    border: 0;
+    overflow: hidden; */
+    position: absolute;
+    bottom: 40px;
+    border: 5px rgba(197, 160, 89, 0.5);
+    width: 100%;
+    padding: 20px;
+    background-color: #C5A059;
 }
