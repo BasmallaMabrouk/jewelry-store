@@ -66,7 +66,7 @@
 
 
                 grid.innerHTML = "";
-
+                var index = 0;
 
                 for (var product of products) {
 
@@ -77,27 +77,110 @@
                         mainImg = product.images[0];
                         hoverImg = product.images[1] ? product.images[1] : product.images[0];
                     }
-
-
                     var card = `
-                <div class="product-card">
-                    <div class="product-img-box">
-                        <img src="${mainImg}" class="img-main" >
-                        <img src="${hoverImg}" class="img-hover">
-                        
-                    </div>
-                    <div class="product-info">
-                        <h3>${product.title}</h3>
-                        <p class="desc">${product.description}</p>
-                        <div class="price-row">
-                            <span class="price">$${product.price}</span>
-                            <span class="rating">⭐ ${product.rating}</span>
+                    <div class="product-card">
+                        <div class="product-img-box">
+                            <img src="${mainImg}" class="img-main" >
+                            <img src="${hoverImg}" class="img-hover">
+                            
                         </div>
-                        <button class="add-to-cart-btn">Add to Cart</button>
-                    </div>
-                </div>`;
+                        <div class="product-info">
+                            <h3>${product.title}</h3>
+                            <p class="desc">${product.description}</p>
+                            <div class="price-row">
+                                <span class="price">$${product.price}</span>
+                                <span class="rating">⭐ ${product.rating}</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>`;
 
                     grid.innerHTML += card;
+
+                    var product_Ring = products[index+10];
+                    mainImg = "";
+                    hoverImg = "";
+                    if (product_Ring.images.length > 0) {
+                        mainImg = product_Ring.images[0];
+                        hoverImg = product_Ring.images[1] ? product_Ring.images[1] : product_Ring.images[0];
+                    }
+                    card = `
+                    <div class="product-card">
+                        <div class="product-img-box">
+                            <img src="${mainImg}" class="img-main" >
+                            <img src="${hoverImg}" class="img-hover">
+                            
+                        </div>
+                        <div class="product-info">
+                            <h3>${product_Ring.title}</h3>
+                            <p class="desc">${product_Ring.description}</p>
+                            <div class="price-row">
+                                <span class="price">$${product_Ring.price}</span>
+                                <span class="rating">⭐ ${product_Ring.rating}</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>`;
+
+                    grid.innerHTML += card;
+                    var product_Bracelet = products[index+20];
+                    mainImg = "";
+                    hoverImg = "";
+                    if (product_Bracelet.images.length > 0) {
+                        mainImg = product_Bracelet.images[0];
+                        hoverImg = product_Bracelet.images[1] ? product_Bracelet.images[1] : product_Bracelet.images[0];
+                    }
+                    card = `
+                    <div class="product-card">
+                        <div class="product-img-box">
+                            <img src="${mainImg}" class="img-main" >
+                            <img src="${hoverImg}" class="img-hover">
+                            
+                        </div>
+                        <div class="product-info">
+                            <h3>${product_Bracelet.title}</h3>
+                            <p class="desc">${product_Bracelet.description}</p>
+                            <div class="price-row">
+                                <span class="price">$${product_Bracelet.price}</span>
+                                <span class="rating">⭐ ${product_Bracelet.rating}</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>`;
+
+                    grid.innerHTML += card;
+                    var product_Neclace = products[index+30];
+                    console.log(product_Neclace)
+                    mainImg = "";
+                    hoverImg = "";
+                    if (product_Neclace.images.length > 0) {
+                        mainImg = product_Neclace.images[0];
+                        hoverImg = product_Neclace.images[1] ? product_Neclace.images[1] : product_Neclace.images[0];
+                    }
+
+                    card = `
+                    <div class="product-card">
+                        <div class="product-img-box">
+                            <img src="${mainImg}" class="img-main" >
+                            <img src="${hoverImg}" class="img-hover">
+                            
+                        </div>
+                        <div class="product-info">
+                            <h3>${product_Neclace.title}</h3>
+                            <p class="desc">${product_Neclace.description}</p>
+                            <div class="price-row">
+                                <span class="price">$${product_Neclace.price}</span>
+                                <span class="rating">⭐ ${product_Neclace.rating}</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>`;
+
+                    grid.innerHTML += card;
+                    index++;
+                    if(index == 11){
+                        return;
+                    }
                 }
             }
         });
