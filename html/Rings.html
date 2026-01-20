@@ -22,7 +22,7 @@
         <div class="Bar">
             <div class="login"><a href="../html/Login.html">Log In</a></div>
             <nav>
-            <div><a href="./Home.html">Home</a></div>
+                <div><a href="./Home.html">Home</a></div>
                 <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
                 <div class="jewelry"><a href="./Necklaces.html">Necklace</a><i class="fa-solid fa-gem icon"></i></div>
                 <div class="jewelry"><a href="./Card.html">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
@@ -36,28 +36,29 @@
     <main>
         <section class="carts">
             <h1 class="section-title">Our Rings</h1>
-            <div id="product-grid" ></div>
+            <div id="product-grid"></div>
 
         </section>
-        
 
-        <footer class="main-footer">
-            <p>© 2026 Girlsz Power A | B | M | G . All Rights Reserved.</p>
-        </footer>
+
+
     </main>
+    <footer class="main-footer">
+        <p>© 2026 Girlsz Power A | B | M | G . All Rights Reserved.</p>
+    </footer>
     <script>
         var xrh = new XMLHttpRequest();
         xrh.open("GET", "../file.json");
         xrh.send();
 
-        xrh.addEventListener("readystatechange", function (){
-            if(xrh.readyState == 4 && xrh.status == 200){
+        xrh.addEventListener("readystatechange", function () {
+            if (xrh.readyState == 4 && xrh.status == 200) {
                 var products = JSON.parse(xrh.responseText)
                 var grid = document.getElementById("product-grid")
 
                 grid.innerHTML = ""
                 for (const product of products) {
-                    if(product.category == "Ring"){
+                    if (product.category == "Ring") {
                         var mainImg = "";
                         var hoverImg = "";
                         if (product.images.length > 0) {
@@ -65,7 +66,7 @@
                             hoverImg = product.images[1] ? product.images[1] : product.images[0];
                         }
 
-                    
+
                         var card = `
                             <div class="product-card">
                                 <div class="product-img-box">
@@ -83,7 +84,7 @@
                                     <a href="./Card.html"><button class="add-to-cart-btn">Add to Cart</button></a>
                                 </div>
                             </div>`;
-                        
+
                         grid.innerHTML += card;
                     }
                 }

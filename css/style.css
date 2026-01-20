@@ -358,7 +358,7 @@ main .img {
     justify-content: center;
     /*  */
      justify-content: flex-start; 
-    animation: marquee 10s linear infinite; 
+    animation: marquee 7s linear infinite; 
 }
 
 
