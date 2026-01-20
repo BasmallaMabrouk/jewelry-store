@@ -14,25 +14,25 @@
             <h2 class="auth-title">Create Account</h2>
             <p class="auth-subtitle">Join our exclusive community today</p>
 
-            <form class="auth-form">
+            <form class="auth-form" id="registerForm">
                 <div class="input-container">
                     <label>Full Name</label>
-                    <input type="text" placeholder="John Doe" required>
+                    <input type="text" id="regName" placeholder="John Doe" required>
                 </div>
 
                 <div class="input-container">
                     <label>Email Address</label>
-                    <input type="email" placeholder="example@mail.com" required>
+                    <input type="email" id="regEmail" placeholder="example@mail.com" required>
                 </div>
 
                 <div class="input-container">
                     <label>Password</label>
-                    <input type="password" placeholder="••••••••" required>
+                    <input type="password" id="regPassword" placeholder="••••••••" required>
                 </div>
 
                 <div class="input-container">
                     <label>Confirm Password</label>
-                    <input type="password" placeholder="••••••••" required>
+                    <input type="password" id="regConfirmPassword" placeholder="••••••••" required>
                 </div>
 
                 <button type="submit" class="prime-btn">Register Now</button>
@@ -44,7 +44,25 @@
             </form>
         </div>
     </section>
+<script type="module">
+    import { registerUser } from "../js/Auth.js";
+    
+    // تأكدي إن الكلمة دي RegisterForm مطابقة تماماً للـ id فوق
+    const form = document.getElementById('registerForm');
 
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const pass = document.getElementById('regPassword').value;
+            
+            registerUser(email, pass, name);
+        });
+    } else {
+        console.error("لم يتم العثور على عنصر باسم registerForm في الصفحة!");
+    }
+</script>
 </body>
 
 </html>
