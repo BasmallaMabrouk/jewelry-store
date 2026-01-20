@@ -86,7 +86,7 @@ nav .jewelry:hover .icon {
 }
 
 nav div {
-    width: 30%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,6 +102,14 @@ nav div {
     display: flex;
     align-items: center;
     gap: 1vw;
+    
+    
+    
+}
+.login a,
+.cart a {
+    text-decoration: none;
+    color: #f6f0eb;
     
 }
 
