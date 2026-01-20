@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,48 +15,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
     <header>
         <img src=" ../images/logo3.png" alt="">
         <div class="Bar">
-        <div class="login"><a href="../html/Login.html">Log In</a></div>
-        <nav>
+            <div class="login"><a href="../html/Login.html">Log In</a></div>
+            <nav>
 
-            <div><a href="./Home.html">Home</a></div>
-            <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
-            <div class="jewelry"><a href="./Necklaces.html">Necklace</a><i class="fa-solid fa-gem icon"></i></div>
-            <div class="jewelry"><a href="./Earrings.html">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
-            <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
-            <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
+                <div><a href="./Home.html">Home</a></div>
+                <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
+                <div class="jewelry"><a href="./Necklaces.html">Necklace</a><i class="fa-solid fa-gem icon"></i></div>
+                <div class="jewelry"><a href="./Earrings.html">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
+                <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
+                <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
 
-        </nav>
-        <a href="./Card.html" class="cart">Cart <i class="fa-solid fa-cart-arrow-down" style="color: #f6f0eb;"></i></a>
-    </div>
+            </nav>
+            <a href="./Card.html" class="cart">Cart <i class="fa-solid fa-cart-arrow-down"
+                    style="color: #f6f0eb;"></i></a>
+        </div>
     </header>
     <main>
         <section class="carts">
             <h1 class="section-title">Our Rings</h1>
-            <div id="product-grid" ></div>
+            <div id="product-grid"></div>
         </section>
-        
 
-        <footer class="main-footer">
-            <p>© 2026 Girlsz Power A | B | M | G . All Rights Reserved.</p>
-        </footer>
+
+
     </main>
+    <footer class="main-footer">
+        <p>© 2026 Girlsz Power A | B | M | G . All Rights Reserved.</p>
+    </footer>
     <script>
         var xrh = new XMLHttpRequest();
         xrh.open("GET", "../file.json");
         xrh.send();
 
-        xrh.addEventListener("readystatechange", function (){
-            if(xrh.readyState == 4 && xrh.status == 200){
+        xrh.addEventListener("readystatechange", function () {
+            if (xrh.readyState == 4 && xrh.status == 200) {
                 var products = JSON.parse(xrh.responseText)
                 var grid = document.getElementById("product-grid")
 
                 grid.innerHTML = ""
                 for (const product of products) {
-                    if(product.category == "Necklace"){
+                    if (product.category == "Necklace") {
                         var mainImg = "";
                         var hoverImg = "";
                         if (product.images.length > 0) {
@@ -63,7 +67,7 @@
                             hoverImg = product.images[1] ? product.images[1] : product.images[0];
                         }
 
-                    
+
                         var card = `
                             <div class="product-card">
                                 <div class="product-img-box">
@@ -81,7 +85,7 @@
                                     <a href="./Card.html"><button class="add-to-cart-btn">Add to Cart</button></a>
                                 </div>
                             </div>`;
-                        
+
                         grid.innerHTML += card;
                     }
                 }
@@ -89,4 +93,5 @@
         })
     </script>
 </body>
+
 </html>
