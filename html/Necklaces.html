@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,29 +14,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 </head>
-
 <body>
     <header>
         <img src=" ../images/logo3.png" alt="">
         <div class="Bar">
-            <div class="login"><a href="../html/Login.html">Log In</a></div>
-            <nav>
-            <div><a href="./Home.html">Home</a></div>
-                <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
-                <div class="jewelry"><a href="./Necklaces.html">Necklace</a><i class="fa-solid fa-gem icon"></i></div>
-                <div class="jewelry"><a href="./Card.html">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
-                <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
-                <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
+        <div class="login"><a href="../html/Login.html">Log In</a></div>
+        <nav>
 
-            </nav>
-            <div class="cart">Cart <i class="fa-solid fa-cart-arrow-down" style="color: #f6f0eb;"></i></div>
-        </div>
+            <div><a href="./Home.html">Home</a></div>
+            <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
+            <div class="jewelry"><a href="./Necklaces.html">Necklace</a><i class="fa-solid fa-gem icon"></i></div>
+            <div class="jewelry"><a href="./Earrings.html">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
+            <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
+            <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
+
+        </nav>
+        <a href="./Card.html" class="cart">Cart <i class="fa-solid fa-cart-arrow-down" style="color: #f6f0eb;"></i></a>
+    </div>
     </header>
     <main>
         <section class="carts">
             <h1 class="section-title">Our Rings</h1>
             <div id="product-grid" ></div>
-
         </section>
         
 
@@ -57,7 +55,7 @@
 
                 grid.innerHTML = ""
                 for (const product of products) {
-                    if(product.category == "Ring"){
+                    if(product.category == "Necklace"){
                         var mainImg = "";
                         var hoverImg = "";
                         if (product.images.length > 0) {
@@ -91,5 +89,4 @@
         })
     </script>
 </body>
-
 </html>
