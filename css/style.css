@@ -70,7 +70,9 @@ nav div {
     /* gap: 5px; */
 }
 
-
+a{
+    text-decoration: none;
+}
 nav a {
     color: #f6f0eb;
     text-decoration: none;
