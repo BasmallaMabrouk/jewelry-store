@@ -65,7 +65,7 @@ nav a {
     color: #f6f0eb;
     text-decoration: none;
     font-size: 20px;
-    /* position: relative; */
+    position: relative;
 }
 
 .Bar nav div .icon {
@@ -74,7 +74,8 @@ nav a {
 }
 
 nav .jewelry:hover a {
-    display: none;
+    width: 0;
+    opacity: 0;
     cursor: pointer;
 }
 
