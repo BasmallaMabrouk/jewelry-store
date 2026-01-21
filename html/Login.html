@@ -32,6 +32,15 @@
         </form>
     </div>
 </section>
-<script src="../js/Auth.js"></script>
+<script type="module">
+    import { loginUser } from "../js/Auth.js";
+    
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('logEmail').value;
+        const pass = document.getElementById('logPassword').value;
+        loginUser(email, pass);
+    });
+// <script src="../js/Auth.js"></script>
 </body>
 </html>

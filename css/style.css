@@ -722,7 +722,7 @@ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-weight: bold;
     transition: 0.3s;
     width: 92%;
-    bottom: 160px;
+    bottom: 105px;
     left: 0;
 }
 
