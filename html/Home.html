@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Girl`z Jewellery</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
     <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> -->
 
-
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
@@ -19,29 +22,12 @@
 
 <body>
 
-    <!-- <div class="start"> 
-        <header>
-            <img src=" ../images/logo3.png" alt="">
-        </header>
-        <div class="Bar">
-            <div class="login">Log In</div>
-            <nav>
-
-                <div><a href="">Home</a></div>
-                <div class="jewelry"><a href="">Store</a><i class="fa-solid fa-gem icon"></i></div>
-                <div class="jewelry"><a href="">Necklace</a><i class="fa-solid fa-gem icon"></i></div>
-                <div class="jewelry"><a href="">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
-                <div class="jewelry"><a href="">Rings</a><i class="fa-solid fa-gem icon"></i></div>
-                <div class="jewelry"><a href="">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
-
-            </nav>
-            <div class="cart">Cart <i class="fa-solid fa-cart-arrow-down" style="color: #f6f0eb;"></i></div>
-        </div> -->
-    <header>
-        <img src=" ../images/logo3.png" alt="">
+<!-- Navbar -->
+<header>
+       
         <div class="Bar">
             <div class="login"><a href="../html/Login.html">Log In</a></div>
-            <nav>
+           <nav>
 
                 <div><a href="./Home.html">Home</a></div>
                 <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
@@ -55,21 +41,54 @@
         </div>
     </header>
 
-    <main>
-        <!-- <img src="../images/download.jpg" alt=""> -->
-        <div class="img">
-            <h2>Her</h2>
-            <p>Love Collection</p>
-            <p>Exclusive diamond rings for couples and lovers.</p>
+<section class="natura-hero">
+    <div class="diagonal-bg"></div>
+
+    <div class="hero-content">
+        <div class="text-side-minimal">
+            <span class="collection-label">New Collection</span>
+            <h1 class="title-slim">Girl`z Jewellery</h1>
+            <p class="desc-slim">Timeless Jewellery Crafted for You</p>
+            <a href="../html/store.html"><button class="shop-btn">SHOP</button></a>
+            
         </div>
 
-        <div class="video">
-            <!-- <video src="../images/video.mp4" autoplay muted loop playsinline> -->
-            </video>
+        <div class="visual-side-main">
+            <div class="dish-anchor">
+                <img src="../images/test2.png" class="dish-image-final">
+                
+                <img src="../images/ring2.png" class="moving-ring-final" id="ringLogo">
+                <img src="../images/tree.png" class="bg-tree-deco" alt="decor">
+            </div>
         </div>
+    </div>
+</section>
 
 
-        <section class="top-categories">
+
+
+<!-- Model Section -->
+<section class="model-wrapper" id="modelSection">
+  <div class="model-container">
+
+    <div class="image-area">
+      <img
+        src="https://i.pinimg.com/1200x/19/e6/76/19e676f2c18efe2f7f38b9151c43f4fc.jpg"
+        class="model-image"
+      />
+      <div class="accent-block"></div>
+    </div>
+
+    <div class="white-layer">
+      <h2>H E R </h2>
+      <p>Elegant handmade jewellery for every moment</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Top Category -->
+ <section class="top-categories">
             <h2 class="section-title">TOP CATEGORIES</h2>
             <div class="glass-ribbon-wrapper">
                 <div class="category-slider" id="catSlider">
@@ -130,20 +149,32 @@
             </div>
 
         </section>
+        <footer class="main-footer">
+        <p>© Girl`z Power A | B | M |G .</p>
+        </footer>
 
+<script >
 
+    window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const ring = document.getElementById("ringLogo");
+    const navBar = document.querySelector(".Bar");
 
-    </main>
-    <footer class="main-footer">
-        <p>© 2026 Girlsz Power A | B | M |G . All Rights Reserved.</p>
-    </footer>
+  
+    if (scrollY < 1500) {
+        const moveDown = scrollY * 1.5; 
+        ring.style.transform = `translate(-50%, calc(-50% + ${moveDown}px))`;
+        ring.style.opacity = "1";
+    }
 
+  
+    if (scrollY > 700) {
+        navBar.classList.add("show-sticky");
+    } else {
+        navBar.classList.remove("show-sticky");
+    }
+});
 
-    <!-- <script src="../js/script.js"></script> -->
-
-
-
-
+</script>
 </body>
-
 </html>
