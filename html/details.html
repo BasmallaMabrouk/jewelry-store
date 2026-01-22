@@ -75,7 +75,36 @@
                 `;
             }
         });
+// Add this function inside your <script> in details.html
+function addToCart(product) {
+    const qty = parseInt(document.getElementById('qty').value);
+    
+    // 1. Get existing cart from localStorage or create empty array
+    let cart = JSON.parse(localStorage.getItem('myCart')) || [];
 
+    // 2. Check if product already exists in cart
+    const existingIndex = cart.findIndex(item => item.id === product.id);
+
+    if (existingIndex > -1) {
+        cart[existingIndex].quantity += qty;
+    } else {
+        cart.push({
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            image: product.images[0],
+            quantity: qty
+        });
+    }
+
+    // 3. Save back to localStorage
+    localStorage.setItem('myCart', JSON.stringify(cart));
+    alert("Added to cart successfully!");
+}
+
+// Inside your fetch().then() where you inject the HTML, 
+// make sure the button looks like this:
+// <button class="buy-btn" onclick='addToCart(${JSON.stringify(product)})'>Add to Cart</button>
     function changeQty(amount) {
         const input = document.getElementById('qty');
         let val = parseInt(input.value) + amount;

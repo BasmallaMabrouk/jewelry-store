@@ -967,3 +967,44 @@ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     color: #8D7B68;
     margin-bottom: 20px;
 }
+.cart-item h4 {
+    font-family: 'Bitter', serif;
+    color: #4A3728;
+}
+
+.checkout-btn:hover {
+    background: #4A3728;
+    transform: translateY(-2px);
+    transition: 0.3s;
+}
+
+.remove-btn:hover {
+    text-decoration: underline;
+}
+.stock-label {
+    font-size: 0.85rem;
+    color: #8D7B68;
+    margin: 10px 0;
+}
+
+.cart-qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.cart-qty-controls button {
+    background: #F3EEE4;
+    border: 1px solid #D6C5A9;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.cart-qty-controls span {
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}

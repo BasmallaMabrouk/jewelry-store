@@ -7,94 +7,128 @@
     <title>Rings</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> -->
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        .stock-label {
+            font-size: 0.9rem;
+            color: #8D7B68;
+            margin: 10px 0;
+            font-family: 'Bitter', serif;
+        }
+        .stock-number {
+            font-weight: bold;
+            color: #705C49;
+        }
+    </style>
 </head>
 
 <body class="store-page">
-<header>
-  <img src="../images/tttt.png"  class="imagefadedd"
-     >
+    <header>
+        <img src="../images/tttt.png" class="imagefadedd">
+        <div class="Bar show-sticky sticky-default">
+            <div class="login"><a href="../html/Login.html">Log In</a></div>
+            <nav>
+                <div><a href="./Home.html">Home</a></div>
+                <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
+                <div class="jewelry"><a href="./Necklaces.html">Necklace</a><i class="fa-solid fa-gem icon"></i></div>
+                <div class="jewelry"><a href="./Earrings.html">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
+                <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
+                <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
+            </nav>
+            <div class="cart">Cart <i class="fa-solid fa-cart-arrow-down" style="color: #f6f0eb;"></i></div>
+        </div>
+    </header>
 
-    <div class="Bar show-sticky sticky-default">
-        <div class="login"><a href="../html/Login.html">Log In</a></div>
-        <nav>
-            <div><a href="./Home.html">Home</a></div>
-            <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
-            <div class="jewelry"><a href="./Necklaces.html">Necklace</a><i class="fa-solid fa-gem icon"></i></div>
-            <div class="jewelry"><a href="./Earrings.html">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
-            <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
-            <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
-        </nav>
-        <div class="cart">Cart <i class="fa-solid fa-cart-arrow-down" style="color: #f6f0eb;"></i></div>
-    </div>
-</header>
     <main>
         <section class="carts">
             <h1 class="section-title">Our Rings</h1>
             <div id="product-grid"></div>
-
         </section>
-
-
-
     </main>
+
     <footer class="main-footer">
-        <p>© Girl`z Power A | B | M |G .</p>
-        </footer>
+        <p>© Girl`z Power A | B | M | G .</p>
+    </footer>
+
     <script>
-       var xrh = new XMLHttpRequest();
-xrh.open("GET", "../file.json");
-xrh.send();
+        // 1. Function to handle adding to cart with stock limit
+        function quickAdd(id, title, price, image, stock) {
+            let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            const existingIndex = cart.findIndex(item => item.id === id);
 
-xrh.addEventListener("readystatechange", function () {
-    if (xrh.readyState == 4 && xrh.status == 200) {
-        var products = JSON.parse(xrh.responseText)
-        var grid = document.getElementById("product-grid")
-
-        grid.innerHTML = ""
-        for (const product of products) {
-            // Change "Earrings" to "Necklace" or "Bracelet" for your other pages
-            if (product.category == "Ring") {
-                var mainImg = "";
-                var hoverImg = "";
-                if (product.images.length > 0) {
-                    mainImg = product.images[0];
-                    hoverImg = product.images[1] ? product.images[1] : product.images[0];
+            if (existingIndex > -1) {
+                if (cart[existingIndex].quantity < stock) {
+                    cart[existingIndex].quantity += 1;
+                } else {
+                    alert("Maximum stock reached for this ring!");
+                    return;
                 }
-
-                var card = `
-                    <div class="product-card">
-                        <div class="product-img-box">
-                            <img src="${mainImg}" class="img-main" >
-                            <img src="${hoverImg}" class="img-hover">
-                        </div>
-                        <div class="product-info">
-                            <h3>${product.title}</h3>
-                            <div class="price-row">
-                                <span class="price">$${product.price}</span>
-                                <span class="rating">⭐ ${product.rating}</span>
-                            </div>
-                            <div class="product-buttons">
-                                <a href="./Card.html"><button class="add-to-cart-btn">Add to Cart</button></a>
-                                <a href="./details.html?id=${product.id}">
-                                    <button class="details-btn">View Details</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>`;
-
-                grid.innerHTML += card;
+            } else {
+                cart.push({
+                    id: id,
+                    title: title,
+                    price: price,
+                    image: image,
+                    quantity: 1,
+                    maxStock: stock 
+                });
             }
+
+            localStorage.setItem('myCart', JSON.stringify(cart));
+            window.location.href = "./Card.html";
         }
-    }
-})
+
+        // 2. Load Ring products
+        var xrh = new XMLHttpRequest();
+        xrh.open("GET", "../file.json");
+        xrh.send();
+
+        xrh.addEventListener("readystatechange", function () {
+            if (xrh.readyState == 4 && xrh.status == 200) {
+                var products = JSON.parse(xrh.responseText);
+                var grid = document.getElementById("product-grid");
+
+                grid.innerHTML = "";
+                for (const product of products) {
+                    // Category filter for Rings
+                    if (product.category == "Ring") {
+                        var mainImg = product.images[0] || '';
+                        var hoverImg = product.images[1] || mainImg;
+
+                        var card = `
+                            <div class="product-card">
+                                <div class="product-img-box">
+                                    <img src="${mainImg}" class="img-main">
+                                    <img src="${hoverImg}" class="img-hover">
+                                </div>
+                                <div class="product-info">
+                                    <h3>${product.title}</h3>
+                                    <div class="price-row">
+                                        <span class="price">$${product.price}</span>
+                                        <span class="rating">⭐ ${product.rating}</span>
+                                    </div>
+
+                                    <p class="stock-label">Available: <span class="stock-number">${product.stock_quantity}</span></p>
+
+                                    <div class="product-buttons">
+                                        <button class="add-to-cart-btn" 
+                                            onclick="quickAdd(${product.id}, '${product.title}', ${product.price}, '${mainImg}', ${product.stock_quantity})">
+                                            Add to Cart
+                                        </button>
+                                        <a href="./details.html?id=${product.id}">
+                                            <button class="details-btn">View Details</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>`;
+
+                        grid.innerHTML += card;
+                    }
+                }
+            }
+        });
     </script>
 </body>
-
 </html>
