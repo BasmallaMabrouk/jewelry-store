@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ستايل خاص بصفحة التفاصيل */
+        .details-container {
+            display: flex;
+            max-width: 1000px;
+            margin: 100px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            gap: 50px;
+        }
+        .details-left { flex: 1; }
+        .details-left img { width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        .details-right { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .details-right h1 { font-family: 'Bitter', serif; color: #705C49; font-size: 2.5rem; margin: 0; }
+        .details-right .price { font-size: 1.8rem; color: #A68B7C; font-weight: bold; }
+        .details-right .desc { line-height: 1.6; color: #6b3e2e; }
+        .details-right .rating { color: #C5A059; font-weight: bold; }
+        
+        .quantity-control { display: flex; align-items: center; gap: 15px; margin: 20px 0; }
+        .quantity-control label { font-weight: bold; color: #705C49; }
+        .quantity-control input { 
+            width: 70px; padding: 10px; text-align: center; 
+            border: 2px solid #F3EEE4; border-radius: 8px; 
+            outline: none; transition: 0.3s;
+        }
+        .quantity-control input:focus { border-color: #705C49; }
+
+        .btn-main {
+            background: #705C49; color: white; border: none;
+            padding: 15px 30px; border-radius: 10px; cursor: pointer;
+            font-size: 1.1rem; font-weight: bold; transition: 0.4s;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-main:hover { background: #4A3728; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body class="store-page">
+    
+    <div id="details-content" class="details-container">
+        <p>Loading product details...</p>
+    </div>
+
+    <script>
+        // 1. الحصول على الـ ID من الرابط
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        let currentProduct = null; // متغير لحفظ بيانات المنتج الحالي
+
+        // 2. جلب البيانات من ملف JSON
+        fetch("../file.json")
+            .then(response => response.json())
+            .then(products => {
+                // البحث عن المنتج بالـ ID (تأكدي أن الـ ID في الـ JSON رقم أو نص حسب الرابط)
+                currentProduct = products.find(p => p.id == productId);
+                
+                if (currentProduct) {
+                    renderProduct(currentProduct);
+                } else {
+                    document.getElementById('details-content').innerHTML = "<h2>Product not found!</h2>";
+                }
+            })
+            .catch(err => console.error("Error loading JSON:", err));
+
+        // 3. عرض البيانات في الصفحة
+        function renderProduct(product) {
+            const container = document.getElementById('details-content');
+            container.innerHTML = `
+                <div class="details-left">
+                    <img src="${product.images[0]}" alt="${product.title}">
+                </div>
+                <div class="details-right">
+                    <h1>${product.title}</h1>
+                    <p class="price">$${product.price}</p>
+                    <p class="rating">⭐ ${product.rating}</p>
+                    <div class="desc">
+                        <h3>Description</h3>
+                        <p>${product.description || "No description available for this product."}</p> 
+                    </div>
+                    
+                    <div class="quantity-control">
+                        <label>Quantity:</label>
+                        <input type="number" id="qty" value="1" min="1">
+                    </div>
+
+                    <button class="btn-main" onclick="addToCart()">Add to Cart</button>
+                </div>
+            `;
+        }
+
+        // 4. وظيفة الإضافة للسلة
+        function addToCart() {
+            if (!currentProduct) return;
+
+            // الحصول على الكمية من الـ input
+            const quantity = parseInt(document.getElementById('qty').value);
+
+            if (isNaN(quantity) || quantity < 1) {
+                alert("Please enter a valid quantity.");
+                return;
+            }
+
+            // جلب السلة من localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // التحقق إذا كان المنتج موجود مسبقاً
+            const existingProductIndex = cart.findIndex(item => item.id == currentProduct.id);
+
+            if (existingProductIndex > -1) {
+                cart[existingProductIndex].quantity += quantity;
+            } else {
+                cart.push({
+                    id: currentProduct.id,
+                    title: currentProduct.title,
+                    price: currentProduct.price,
+                    image: currentProduct.images[0],
+                    quantity: quantity
+                });
+            }
+
+            // حفظ السلة
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // تنبيه للمستخدم
+            alert(`Success! ${quantity} ${currentProduct.title}(s) added to your cart.`);
+        }
+    </script>
+</body>
+</html>

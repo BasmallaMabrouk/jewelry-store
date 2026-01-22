@@ -48,47 +48,51 @@
         </footer>
     <script>
         var xrh = new XMLHttpRequest();
-        xrh.open("GET", "../file.json");
-        xrh.send();
+xrh.open("GET", "../file.json");
+xrh.send();
 
-        xrh.addEventListener("readystatechange", function () {
-            if (xrh.readyState == 4 && xrh.status == 200) {
-                var products = JSON.parse(xrh.responseText)
-                var grid = document.getElementById("product-grid")
+xrh.addEventListener("readystatechange", function () {
+    if (xrh.readyState == 4 && xrh.status == 200) {
+        var products = JSON.parse(xrh.responseText)
+        var grid = document.getElementById("product-grid")
 
-                grid.innerHTML = ""
-                for (const product of products) {
-                    if (product.category == "Necklace") {
-                        var mainImg = "";
-                        var hoverImg = "";
-                        if (product.images.length > 0) {
-                            mainImg = product.images[0];
-                            hoverImg = product.images[1] ? product.images[1] : product.images[0];
-                        }
-
-
-                        var card = `
-                            <div class="product-card">
-                                <div class="product-img-box">
-                                    <img src="${mainImg}" class="img-main" >
-                                    <img src="${hoverImg}" class="img-hover">
-                                    
-                                </div>
-                                <div class="product-info">
-                                    <h3>${product.title}</h3>
-                                    <div class="price-row">
-                                        <span class="price">$${product.price}</span>
-                                        <span class="rating">⭐ ${product.rating}</span>
-                                    </div>
-                                    <a href="./Card.html"><button class="add-to-cart-btn">Add to Cart</button></a>
-                                </div>
-                            </div>`;
-
-                        grid.innerHTML += card;
-                    }
+        grid.innerHTML = ""
+        for (const product of products) {
+            // Change "Earrings" to "Necklace" or "Bracelet" for your other pages
+            if (product.category == "Necklace") {
+                var mainImg = "";
+                var hoverImg = "";
+                if (product.images.length > 0) {
+                    mainImg = product.images[0];
+                    hoverImg = product.images[1] ? product.images[1] : product.images[0];
                 }
+
+                var card = `
+                    <div class="product-card">
+                        <div class="product-img-box">
+                            <img src="${mainImg}" class="img-main" >
+                            <img src="${hoverImg}" class="img-hover">
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.title}</h3>
+                            <div class="price-row">
+                                <span class="price">$${product.price}</span>
+                                <span class="rating">⭐ ${product.rating}</span>
+                            </div>
+                            <div class="product-buttons">
+                                <a href="./Card.html"><button class="add-to-cart-btn">Add to Cart</button></a>
+                                <a href="./details.html?id=${product.id}">
+                                    <button class="details-btn">View Details</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>`;
+
+                grid.innerHTML += card;
             }
-        })
+        }
+    }
+})
     </script>
 </body>
 
