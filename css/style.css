@@ -73,6 +73,22 @@ body {
     font-size: 0.7rem;
     color: #F3EEE4;
 }
+.Bar nav div .icon {
+    display: none;
+    color: #f6f0eb;
+}
+
+nav .jewelry:hover a {
+    width: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+nav .jewelry:hover .icon {
+    display: inline-block;
+    cursor: pointer;
+    color: #f6f0eb;
+}
 
 /* Ring Logo */
 .logo-ring {
@@ -311,8 +327,9 @@ body {
 
 .dish-image-final {
     width: 100%;
+    height: 120%;
     /* عشان اخلي الطبق مايل يكون نفس التقسيمه مع اللونين*/
-    transform: rotate(-3deg) scaleX(1.5); 
+    transform: scaleX(1.5); 
     
     filter: drop-shadow(10px 20px 30px rgba(0,0,0,0.08));
 }
@@ -323,8 +340,8 @@ body {
     width: 120px; 
     z-index: 10;
  
-    top: 77%; 
-    left: 65%; 
+    top: 40%; 
+    left: 40%; 
    
     transform: translate(-50%, -50%);
     filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
@@ -338,6 +355,11 @@ body {
     color: #6b3e2e;
     margin-top: 20px;
     cursor: pointer;
+}
+
+.shop-btn:hover {
+    background: #6b3e2ebb;
+    color: #F3EEE4;
 }
 
 .bg-tree-deco {
@@ -586,6 +608,7 @@ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
     display: flex;
     justify-content: center;
+    align-items:center;
 }
 
 .category-slider {
@@ -594,6 +617,8 @@ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     justify-content: center;
     /*  */
      justify-content: flex-start; 
+     align-items:center;
+
     animation: marquee 7s linear infinite; 
 }
 
@@ -636,8 +661,13 @@ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .cat-item {
+
     text-align: center;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
 }
 
 .circle-box {
@@ -656,6 +686,7 @@ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     width: 70%;
     height: 70%;
     object-fit: contain;
+    
 }
 
 .cat-item h3 {
