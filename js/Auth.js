@@ -38,11 +38,11 @@ export async function loginUser(email, password) {
 
             if (userData.role == "admin") {
                 alert("Welcome Admin!");
-<<<<<<< HEAD
-                window.location.href = "Home.html"; 
-=======
+
+              
+
                 window.location.href = "AdminDashboard.html";
->>>>>>> 4625cccbcece65ec7aa6c16364df556d604c00c8
+
             } else {
                 alert("Login Successful!");
 

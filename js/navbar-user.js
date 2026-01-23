@@ -41,7 +41,7 @@ if (user) {
     });
 }
 
-}
+
 
 
 updateNavbar();
