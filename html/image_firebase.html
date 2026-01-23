@@ -1,0 +1,62 @@
+<!---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Products</title>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <h1>Upload Products to Firebase</h1>
+  <p>Open console (F12) to see upload progress.</p>
+
+
+  <script type="module" >
+
+   import { db } from "../js/CDNFirebase.js"; // ملف config بتاعك
+import { collection, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// جلب ملف JSON
+async function fetchProducts() {
+  try {
+    const response = await fetch("../file.json");
+    const products = await response.json();
+    return products;
+  } catch (error) {
+    console.error("Error reading JSON:", error);
+    return [];
+  }
+}
+
+// رفع المنتجات
+async function uploadProducts() {
+  const products = await fetchProducts();
+
+  for (const product of products) {
+    try {
+      // لو فيه id استخدميه، لو مش موجود اعملي auto-id
+      const docRef = product.id
+        ? doc(collection(db, "products"), product.id)
+        : doc(collection(db, "products")); // هنا auto-generated id
+
+      await setDoc(docRef, product);
+
+      console.log(`Uploaded: ${product.title}`);
+    } catch (error) {
+      console.error("Error uploading:", product.title, error);
+    }
+  }
+
+  console.log("All products uploaded!");
+}
+
+uploadProducts();
+
+  </script>
+</body>
+</html>
+-->
