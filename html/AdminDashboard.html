@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girl`z Jewellery</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
+    <script type="module" src="../js/navbar-user.js"></script>
+    <script type="module" src="../js/admin-dashboard.js"></script>
+
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+        <style>
+            .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.admin-table th, .admin-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(112, 92, 73, 0.1);
+}
+
+.admin-table th {
+    background: #705C49;
+    color: #F3EEE4;
+    font-family: 'Bitter', serif;
+    font-weight: 500;
+}
+
+.table-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #D6C5A9;
+}
+
+.cat-badge {
+    background: #D6C5A9;
+    color: #4A3728;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.edit-btn, .delete-btn {
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: 0.3s;
+}
+
+.edit-btn { background: #4A90E2; color: white; }
+.delete-btn { background: #E74C3C; color: white; }
+
+.edit-btn:hover, .delete-btn:hover { opacity: 0.7; }
+        </style>
+
+</head>
+
+<body>
+<div class="dashboard-wrapper">
+    <aside class="admin-sidebar">
+        <div class="admin-profile-section">
+            <div class="admin-avatar">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <h3 id="adminName"> </h3>
+            <p>Store Manager</p>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <button class="side-btn active" onclick="showSection('products')">
+                <i class="fa-solid fa-box"></i> Products
+            </button>
+            <button class="side-btn" onclick="showSection('categories')">
+                <i class="fa-solid fa-layer-group"></i> Categories
+            </button>
+            <button class="side-btn" onclick="showSection('orders')">
+                <i class="fa-solid fa-cart-shopping"></i> Orders
+            </button>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <header class="main-header">
+            <h2 id="section-title">Manage Products</h2>
+            <button class="add-new-btn">+ Add New Product</button>
+        </header>
+
+        <section id="content-area" class="glass-card" style="  max-width: 800px; ">
+            </section>
+    </main>
+</div>
+
+
+
+<div id="productModal" class="modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
+    <div style="background:#F3EEE4; margin:5% auto; padding:25px; width:90%; max-width:500px; border-radius:15px; position:relative; font-family: 'Bitter', serif;">
+        <span onclick="closeModal()" style="position:absolute; right:20px; top:10px; cursor:pointer; font-size:25px;">&times;</span>
+        <h3 id="modalTitle">Add New Product</h3>
+        <form id="productForm">
+            <input type="hidden" id="productId"> <input type="text" id="title" placeholder="Product Title" required style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
+            <input type="text" id="category" placeholder="Category (e.g., bracelet)" required style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
+            <input type="number" id="price" placeholder="Price" required style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
+            <input type="number" id="stock" placeholder="Stock Quantity" required style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
+            <input type="text" id="image1" placeholder="Image URL 1" required style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
+            <input type="text" id="image2" placeholder="Image URL 2 (Optional)" style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
+            <textarea id="description" placeholder="Description" style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9; height:80px;"></textarea>
+            <button type="submit" style="width:100%; background:#705C49; color:white; padding:12px; border:none; border-radius:5px; cursor:pointer;">Save Product</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

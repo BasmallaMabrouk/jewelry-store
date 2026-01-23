@@ -1039,3 +1039,197 @@ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     min-width: 20px;
     text-align: center;
 }
+/*
+drop down at log in
+*/
+/* Admin Dropdown Styling */
+.admin-dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    color: #F3EEE4;
+    font-family: 'Bitter', serif;
+}
+
+.admin-name i {
+    font-size: 0.7rem;
+    margin-left: 5px;
+    transition: 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F3EEE4;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    z-index: 1001;
+    top: 100%;
+    right: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #705C49 !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: none ;
+    font-size: 0.9rem ;}
+
+.dropdown-content a:hover {
+    background-color: #D6C5A9;
+    color: #4A3728 !important;
+}
+
+.admin-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.admin-dropdown:hover .admin-name i {
+    transform: rotate(180deg);
+}
+
+/*dashborsd*/
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #f8f5f2;
+}
+
+.admin-sidebar {
+    width: 280px;
+    background: #705C49;
+    color: #F3EEE4;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-profile-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.admin-avatar {
+    width: 80px;
+    height: 80px;
+    background: #D6C5A9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #705C49;
+}
+
+.sidebar-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.side-btn {
+    background: transparent;
+    border: none;
+    color: #F3EEE4;
+    padding: 15px 20px;
+    text-align: left;
+    font-family: 'Bitter', serif;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.side-btn.active, .side-btn:hover {
+    background: #F3EEE4;
+    color: #705C49;
+}
+
+.admin-main {
+    flex: 1;
+    padding: 40px;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.add-new-btn {
+    background: #705C49;
+    color: white;
+    padding: 10px 15px;
+    position: relative;
+    margin-left: 50px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/*
+
+*/
+
+         .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.admin-table th, .admin-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(112, 92, 73, 0.1);
+}
+
+.admin-table th {
+    background: #705C49;
+    color: #F3EEE4;
+    font-family: 'Bitter', serif;
+    font-weight: 500;
+}
+
+.table-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #D6C5A9;
+}
+
+.cat-badge {
+    background: #D6C5A9;
+    color: #4A3728;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.edit-btn, .delete-btn {
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: 0.3s;
+}
+
+.edit-btn { background: #4A90E2; color: white; }
+.delete-btn { background: #E74C3C; color: white; }
+
+.edit-btn:hover, .delete-btn:hover { opacity: 0.7; }

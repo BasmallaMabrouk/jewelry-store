@@ -36,12 +36,14 @@ export async function loginUser(email, password) {
             const userData = userDoc.data();
             localStorage.setItem("userRole", userData.role);
 
-            if (userData.role === "admin") {
+            if (userData.role == "admin") {
                 alert("Welcome Admin!");
-                window.location.href = "AdminDashboard.html"; 
+                window.location.href = "Home.html"; 
             } else {
                 alert("Login Successful!");
+
                 window.location.href = "Home.html";
+               
             }
         }
     } catch (error) {
