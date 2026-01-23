@@ -1,133 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Girl`z Jewellery</title>
+    <title>Admin Dashboard - Girl'z Jewellery</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
-    <script type="module" src="../js/navbar-user.js"></script>
-    <script type="module" src="../js/admin-dashboard.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300;500;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #705C49;
+            --accent: #D6C5A9;
+            --bg: #F3EEE4;
+            --glass: rgba(255, 255, 255, 0.6);
+        }
 
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> -->
+        body { background-color: var(--bg); font-family: 'Bitter', serif; margin: 0; }
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,500&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-        <style>
-            .admin-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 15px;
-    overflow: hidden;
-}
+        .dashboard-wrapper { display: flex; min-height: 100vh; }
 
-.admin-table th, .admin-table td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid rgba(112, 92, 73, 0.1);
-}
+        /* Sidebar Styling */
+        .admin-sidebar {
+            width: 260px;
+            background: var(--primary);
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100%;
+        }
 
-.admin-table th {
-    background: #705C49;
-    color: #F3EEE4;
-    font-family: 'Bitter', serif;
-    font-weight: 500;
-}
+        .admin-profile-section { text-align: center; margin-bottom: 40px; }
+        .admin-avatar { font-size: 3rem; margin-bottom: 10px; color: var(--accent); }
+        .sidebar-nav { display: flex; flex-direction: column; gap: 10px; }
+        
+        .side-btn {
+            background: transparent;
+            border: none;
+            color: #ececec;
+            padding: 15px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
 
-.table-img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #D6C5A9;
-}
+        .side-btn.active, .side-btn:hover { background: rgba(255,255,255,0.1); color: var(--accent); }
 
-.cat-badge {
-    background: #D6C5A9;
-    color: #4A3728;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-}
+        /* Main Content Area */
+        .admin-main { flex: 1; margin-left: 260px; padding: 40px; }
+        .main-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 30px;
+        }
 
-.edit-btn, .delete-btn {
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-right: 5px;
-    transition: 0.3s;
-}
+        .add-new-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-.edit-btn { background: #4A90E2; color: white; }
-.delete-btn { background: #E74C3C; color: white; }
+        /* Tables & Cards */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
 
-.edit-btn:hover, .delete-btn:hover { opacity: 0.7; }
-        </style>
+        .admin-table th, .admin-table td { padding: 18px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .admin-table th { background: var(--primary); color: white; }
 
+        .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+        .cat-card { background: white; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid var(--accent); }
+        .cat-card img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
+
+        /* Modal */
+        .modal { display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5); backdrop-filter: blur(5px); }
+        .modal-content { background: white; margin: 5% auto; padding: 30px; width: 450px; border-radius: 20px; position: relative; }
+        .modal-content input, .modal-content textarea { width: 100%; margin: 10px 0; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+        
+        .status-badge { padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; background: var(--accent); color: var(--primary); }
+    </style>
 </head>
-
 <body>
+
 <div class="dashboard-wrapper">
     <aside class="admin-sidebar">
         <div class="admin-profile-section">
-            <div class="admin-avatar">
-                <i class="fa-solid fa-user-tie"></i>
-            </div>
-            <h3 id="adminName"> </h3>
-            <p>Store Manager</p>
+            <div class="admin-avatar"><i class="fa-solid fa-circle-user"></i></div>
+            <h3>Admin Panel</h3>
+            <p>Jewellery Store Manager</p>
         </div>
-        
         <nav class="sidebar-nav">
-            <button class="side-btn active" onclick="showSection('products')">
-                <i class="fa-solid fa-box"></i> Products
-            </button>
-            <button class="side-btn" onclick="showSection('categories')">
-                <i class="fa-solid fa-layer-group"></i> Categories
-            </button>
-            <button class="side-btn" onclick="showSection('orders')">
-                <i class="fa-solid fa-cart-shopping"></i> Orders
-            </button>
+            <button class="side-btn active" onclick="showSection('products', this)"><i class="fa-solid fa-gem"></i> Products</button>
+            <button class="side-btn" onclick="showSection('categories', this)"><i class="fa-solid fa-list-ul"></i> Categories</button>
+            <button class="side-btn" onclick="showSection('orders', this)"><i class="fa-solid fa-truck-fast"></i> Orders</button>
         </nav>
     </aside>
 
     <main class="admin-main">
         <header class="main-header">
             <h2 id="section-title">Manage Products</h2>
-            <button class="add-new-btn">+ Add New Product</button>
+            <button class="add-new-btn" id="mainActionBtn" onclick="openProductModal()">+ Add New Product</button>
         </header>
 
-        <section id="content-area" class="glass-card" style="  max-width: 800px; ">
-            </section>
+        <div id="content-area">
+            </div>
     </main>
 </div>
 
-
-
-<div id="productModal" class="modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
-    <div style="background:#F3EEE4; margin:5% auto; padding:25px; width:90%; max-width:500px; border-radius:15px; position:relative; font-family: 'Bitter', serif;">
-        <span onclick="closeModal()" style="position:absolute; right:20px; top:10px; cursor:pointer; font-size:25px;">&times;</span>
-        <h3 id="modalTitle">Add New Product</h3>
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeModals()" style="float:right; cursor:pointer; font-size:24px;">&times;</span>
+        <h3 id="modalTitle">Product Details</h3>
         <form id="productForm">
-            <input type="hidden" id="productId"> <input type="text" id="title" placeholder="Product Title" required style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
-            <input type="text" id="category" placeholder="Category (e.g., bracelet)" required style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
-            <input type="number" id="price" placeholder="Price" required style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
-            <input type="number" id="stock" placeholder="Stock Quantity" required style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
-            <input type="text" id="image1" placeholder="Image URL 1" required style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
-            <input type="text" id="image2" placeholder="Image URL 2 (Optional)" style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9;">
-            <textarea id="description" placeholder="Description" style="width:100%; margin:10px 0; padding:10px; border-radius:5px; border:1px solid #D6C5A9; height:80px;"></textarea>
-            <button type="submit" style="width:100%; background:#705C49; color:white; padding:12px; border:none; border-radius:5px; cursor:pointer;">Save Product</button>
+            <input type="text" id="pTitle" placeholder="Product Name" required>
+            <input type="text" id="pCategory" placeholder="Category (necklace, ring...)" required>
+            <input type="number" id="pPrice" placeholder="Price ($)" required>
+            <input type="number" id="pStock" placeholder="Stock Quantity" required>
+            <input type="text" id="pImage1" placeholder="Main Image URL" required>
+            <textarea id="pDesc" placeholder="Product Description"></textarea>
+            <button type="submit" class="add-new-btn" style="width:100%">Save Product</button>
         </form>
     </div>
 </div>
 
+<div id="categoryModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeModals()" style="float:right; cursor:pointer; font-size:24px;">&times;</span>
+        <h3>Add New Category</h3>
+        <form id="categoryForm">
+            <input type="text" id="catName" placeholder="Category Name" required>
+            <input type="text" id="catImg" placeholder="Category Image URL" required>
+            <button type="submit" class="add-new-btn" style="width:100%">Add Category</button>
+        </form>
+    </div>
+</div>
+
+<script type="module" src="../js/admin-dashboard.js"></script>
+
+<script>
+    // دوال مساعدة للـ UI
+    function openProductModal() { document.getElementById('productModal').style.display = 'block'; }
+    function closeModals() { 
+        document.getElementById('productModal').style.display = 'none'; 
+        document.getElementById('categoryModal').style.display = 'none';
+    }
+    window.onclick = (event) => { if (event.target.className === 'modal') closeModals(); }
+</script>
 
 </body>
 </html>
