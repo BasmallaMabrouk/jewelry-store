@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <script type="module" src="../js/navbar-user.js"></script>
     <style>
         /* Style for the stock label */
         .stock-label {
@@ -29,9 +30,11 @@
 
 <body class="store-page">
     <header>
-        <img src="../images/tttt.png" class="imagefadedd">
-        <div class="Bar show-sticky sticky-default">
-            <div class="login"><a href="../html/Login.html">Log In</a></div>
+
+        <div class="Bar">
+            <li id="userBox">
+                <a style="color: #f6f0eb;" href="../html/Login.html" id="loginBtn">Login</a>
+            </li>
             <nav>
                 <div><a href="./Home.html">Home</a></div>
                 <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
@@ -39,11 +42,13 @@
                 <div class="jewelry"><a href="./Earrings.html">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
                 <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
                 <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
+
             </nav>
             <div class="cart"> <a href="../html/Card.html">Cart</a> <i class="fa-solid fa-cart-arrow-down"
                     style="color: #f6f0eb;"></i></div>
         </div>
     </header>
+    <img src="../images/tttt.png" class="imagefadedd">
 
     <main>
         <section class="carts">
