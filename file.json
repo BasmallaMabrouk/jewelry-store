@@ -1,279 +1,280 @@
 [
   {
-    "id": 1,
+    
     "title": "Gold Necklace",
-    "category": "Necklace",
+    "category": "necklace",
     "price": 250,
     "images": [
-      "../images/Necklaces/1.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/1.jpg"
+      
     ],
     "description": "Elegant 18K gold necklace with a classic design.",
     "stock_quantity": 20,
     "rating": 4.5
   },
   {
-    "id": 2,
+    
     "title": "Pearl Necklace",
-    "category": "Necklace",
+    "category": "necklace",
     "price": 300,
     "images": [
-      "../images/Necklaces/2-1.jpg",
-      "../images/Necklaces/2-2.webp",
-      "../images/Necklaces/2-3.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/2-1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/2-2.webp",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/2-3.jpg"
     ],
     "description": "Classic pearl necklace with a modern touch.",
     "stock_quantity": 15,
     "rating": 4.2
   },
   {
-    "id": 3,
+    
     "title": "Platinum Necklace",
-    "category": "Necklace",
+    "category": "necklace",
     "price": 620,
     "images": [
-      "../images/Necklaces/3.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/3.jpg"
     ],
     "description": "Premium platinum necklace with sleek design.",
     "stock_quantity": 8,
     "rating": 4.8
   },
   {
-    "id": 4,
+    
     "title": "Layered Necklace",
-    "category": "Necklace",
+    "category": "necklace",
     "price": 210,
     "images": [
-      "../images/Necklaces/4-1.jpg",
-      "../images/Necklaces/4-2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/4-1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/4-2.jpg"
     ],
     "description": "Modern layered necklace with elegant chains.",
     "stock_quantity": 25,
     "rating": 4.3
   },
   {
-    "id": 5,
+    
     "title": "Choker Necklace",
-    "category": "Necklace",
+    "category": "necklace",
     "price": 160,
     "images": [
-      "../images/Necklaces/5-1.jpg",
-      "../images/Necklaces/5-2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/5-1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/5-2.jpg"
     ],
     "description": "Fashionable choker necklace for trendy looks.",
     "stock_quantity": 30,
     "rating": 4.1
   },
   {
-    "id": 6,
+    
     "title": "Heart Necklace",
-    "category": "Necklace",
+    "category": "necklace",
     "price": 200,
     "images": [
-      "../images/Necklaces/6-1.jpg",
-      "../images/Necklaces/6-2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/6-1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/6-2.jpg"
     ],
     "description": "Heart-shaped necklace perfect as a gift.",
     "stock_quantity": 18,
     "rating": 4.6
   },
   {
-    "id": 7,
+    
     "title": "Pendant Necklace",
-    "category": "Necklace",
+    "category": "necklace",
     "price": 240,
     "images": [
-      "../images/Necklaces/7-1.jpg",
-      "../images/Necklaces/7-2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/7-1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/7-2.jpg"
     ],
     "description": "Pendant necklace with elegant chain.",
     "stock_quantity": 22,
     "rating": 4.4
   },
   {
-    "id": 8,
+    
     "title": "Opal Necklace",
-    "category": "Necklace",
+    "category": "necklace",
     "price": 280,
     "images": [
-      "../images/Necklaces/8-1.jpg",
-      "../images/Necklaces/8-2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/8-1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/8-2.jpg"
     ],
     "description": "Delicate opal necklace with shimmering stones.",
     "stock_quantity": 25,
     "rating": 4.3
   },
   {
-    "id": 9,
+    
     "title": "Charm Necklace",
-    "category": "Necklace",
+    "category": "necklace",
     "price": 220,
     "images": [
-      "../images/Necklaces/9-1.jpg",
-      "../images/Necklaces/9-2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/9-1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/9-2.jpg"
     ],
     "description": "Fun charm necklace with customizable pendants.",
     "stock_quantity": 30,
     "rating": 4.2
   },
   {
-    "id": 10,
+    
     "title": "Silver Pendant",
-    "category": "Necklace",
+    "category": "necklace",
     "price": 190,
     "images": [
-      "../images/Necklaces/10-1.jpg",
-      "../images/Necklaces/10-2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/10-1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Necklaces/10-2.jpg"
     ],
     "description": "Simple silver pendant necklace for everyday elegance.",
     "stock_quantity": 35,
     "rating": 4.1
   },
   {
-    "id": 11,
+    
     "title": "Princess Cut Diamond Ring",
-    "category": "Ring",
+    "category": "ring",
     "price": 680,
     "images": [
-      "../images/Rings/10.jpg",
-      "../images/Rings/11.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/10.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/11.jpg"
     ],
     "description": "Brilliant princess cut diamond with maximum sparkle and modern square shape.",
     "stock_quantity": 9,
     "rating": 4.8
   },
   {
-    "id": 12,
+    
     "title": "Oval Diamond Ring",
-    "category": "Ring",
+    "category": "ring",
     "price": 590,
     "images": [
-      "../images/Rings/20.jfif",
-      "../images/Rings/21.jfif",
-      "../images/Rings/22.jfif"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/20.jfif",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/21.jfif",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/22.jfif"
     ],
     "description": "Elegant oval shape diamond that elongates the finger beautifully.",
     "stock_quantity": 11,
     "rating": 4.6
   },
   {
-    "id": 13,
+   
     "title": "Cushion Cut Ring",
-    "category": "Ring",
+    "category": "ring",
     "price": 620,
     "images": [
-      "../images/Rings/30.jpg",
-      "../images/Rings/31.jpg",
-      "../images/Rings/32.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/30.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/31.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/32.jpg"
     ],
     "description": "Soft pillow-like cushion cut diamond for vintage romantic look.",
     "stock_quantity": 7,
     "rating": 4.7
   },
   {
-    "id": 14,
+   
     "title": "Pear Shaped Diamond Ring",
-    "category": "Ring",
+    "category": "ring",
     "price": 510,
     "images": [
-      "../images/Rings/40.jpg",
-      "../images/Rings/41.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/40.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/41.jpg"
     ],
     "description": "Teardrop pear shape diamond, unique and flattering on any hand.",
     "stock_quantity": 13,
     "rating": 4.5
   },
   {
-    "id": 15,
+    
     "title": "Marquise Diamond Ring",
-    "category": "Ring",
+    "category": "ring",
     "price": 570,
     "images": [
-      "../images/Rings/50.jpg",
-      "../images/Rings/51.jpg",
-      "../images/Rings/52.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/50.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/51.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/52.jpg"
     ],
     "description": "Elongated marquise cut for bold and dramatic sparkle.",
     "stock_quantity": 6,
     "rating": 4.4
   },
   {
-    "id": 16,
+    
     "title": "Halo Diamond Ring",
-    "category": "Ring",
+    "category": "ring",
     "price": 750,
     "images": [
-      "../images/Rings/60.jpg",
-      "../images/Rings/61.jpg",
-      "../images/Rings/62.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Ringshttps://github.com/BasmallaMabrouk/jewelry-store/blob/main/images/Rings/https://github.com/BasmallaMabrouk/jewelry-store/blob/main/images/Rings/60.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/https://github.com/BasmallaMabrouk/jewelry-store/blob/main/images/Rings/61.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/https://github.com/BasmallaMabrouk/jewelry-store/blob/main/images/Rings/62.jpg"
     ],
     "description": "Center diamond surrounded by halo of smaller diamonds for extra brilliance.",
     "stock_quantity": 5,
     "rating": 4.9
   },
   {
-    "id": 17,
+    
     "title": "Three Stone Ring",
-    "category": "Ring",
+    "category": "ring",
     "price": 890,
     "images": [
-      "../images/Rings/70.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/https://github.com/BasmallaMabrouk/jewelry-store/blob/main/images/Rings/70.jpg"
     ],
     "description": "Symbolic three-stone design representing past, present, and future.",
     "stock_quantity": 4,
     "rating": 4.8
   },
   {
-    "id": 18,
+    
     "title": "Vintage Art Deco Ring",
-    "category": "Ring",
+    "category": "ring",
     "price": 720,
     "images": [
-      "../images/Rings/80.webp",
-      "../images/Rings/81.webp",
-      "../images/Rings/82.webp"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/80.webp",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/https://github.com/BasmallaMabrouk/jewelry-store/blob/main/images/Rings/81.webp",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/https://github.com/BasmallaMabrouk/jewelry-store/blob/main/images/Rings/82.webp"
     ],
     "description": "Geometric Art Deco style with intricate milgrain details.",
     "stock_quantity": 8,
-    "rating": 4.7
+    "rating": 4.5
   },
   {
-    "id": 19,
+   
     "title": "Solitaire Platinum Ring",
-    "category": "Ring",
+    "category": "ring",
     "price": 980,
     "images": [
-      "../images/Rings/90.jpg",
-      "../images/Rings/91.jpg",
-      "../images/Rings/92.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/90.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/91.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/92.jpg"
     ],
     "description": "Classic single diamond in timeless platinum setting.",
     "stock_quantity": 3,
     "rating": 5.0
   },
   {
-    "id": 20,
+   
     "title": "Radiant Cut Diamond Ring",
-    "category": "Ring",
+    "category": "ring",
     "price": 640,
     "images": [
-      "../images/Rings/100.jpg",
-      "../images/Rings/101.jpg",
-      "../images/1Rings/02.jpg",
-      "../images/Rings/103.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/100.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/101.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/02.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Rings/103.jpg"
     ],
     "description": "Rectangular radiant cut with brilliant facets for fiery sparkle.",
     "stock_quantity": 10,
     "rating": 4.6
   },
  {
-    "id": 21,
+    
     "title": "Matrix Tennis bracelet",
-    "category": "Bracelet",
+    "category": "bracelet",
     "price": 120,
     "images": [
- "../images/Bracelets/1.jpg",
-        "../images/Bracelets/2.jpg",
- "../images/Bracelets/3.jpg"
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/1.jpg",
+        "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/2.jpg",
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Braceletsy-store/blob/main/images/Bracelets/3.jpg"
 
 ],
     "description": "white silver-tone brass glass crystal embellishment polished finish claw/prong setting Store your jewellery in the original box or a fabric pouch to protect it and always lay it flat.",
@@ -281,13 +282,13 @@
     "rating": 4.3
   },
   {
-    "id": 22,
+    
     "title": "triple-band bracelet",
-    "category": "Bracelet",
+    "category": "bracelet",
     "price": 140,
    "images": [
- "../images/Bracelets/4.jpg",
-        "../images/Bracelets/5.jpg"
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/4.jpg",
+        "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/5.jpg"
 
 ],
     "description": "Beautiful charm bracelet with customizable charms.",
@@ -295,14 +296,14 @@
     "rating": 4.4
   },
   {
-    "id": 23,
+    
     "title": "Gold Monica Vinader",
-    "category": "Bracelet",
+    "category": "bracelet",
     "price": 230,
      "images": [
- "../images/Bracelets/6.jpg",
-        "../images/Bracelets/7.jpg",
- "../images/Bracelets/8.jpg"
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/6.jpg",
+        "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/7.jpg",
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/8.jpg"
 
 ],
     "description": "Classic gold bangle with smooth texture.",
@@ -310,14 +311,14 @@
     "rating": 4.6
   },
   {
-    "id": 24,
+    
     "title": "triple-band bracelet",
-    "category": "Bracelet",
+    "category": "bracelet",
     "price": 190,
          "images": [
- "../images/Bracelets/10.jpg",
-        "../images/Bracelets/9.jpg",
- "../images/Bracelets/11.jpg"
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/10.jpg",
+        "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/9.jpg",
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/11.jpg"
 
 ],
     "description": "Stylish cuff bracelet with modern design.",
@@ -325,13 +326,13 @@
     "rating": 4.5
   },
   {
-    "id": 25,
+   
     "title": "Monica Vinader",
-    "category": "Bracelet",
+    "category": "bracelet",
     "price": 80,
       "images": [
- "../images/Bracelets/12.jpg",
-        "../images/Bracelets/13.jpg"
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/12.jpg",
+        "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/13.jpg"
 
 ],
     "description": "Colorful beaded bracelet for casual wear.",
@@ -342,13 +343,13 @@
 
 
   {
-    "id": 26,
+    
     "title": "CharriolBracelet",
-    "category": "Bracelet",
+    "category": "bracelet",
     "price": 150,
        "images": [
- "../images/Bracelets/14.jpg",
-        "../images/Bracelets/15.jpg"
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/14.jpg",
+        "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/mainhttps://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/15.jpg"
 
 ],
     "description": "Infinity symbol bracelet with modern style.",
@@ -356,14 +357,14 @@
     "rating": 4.4
   },
   {
-    "id": 27,
+    
     "title": "paperclip chain bracelet",
-    "category": "Bracelet",
+    "category": "bracelet",
     "price": 70,
        "images": [
- "../images/Bracelets/16.jpg",
-        "../images/Bracelets/17.jpg",
- "../images/Bracelets/18.jpg"
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/16.jpg",
+        "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/17.jpg",
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/18.jpg"
 
 ],
     "description": "Leather bracelet with metal clasp.",
@@ -371,14 +372,14 @@
     "rating": 4.2
   },
   {
-    "id": 28,
+   
     "title": "Rockstud leather bracelet",
-    "category": "Bracelet",
+    "category": "bracelet",
     "price": 210,
            "images": [
- "../images/Bracelets/19.jpg",
-        "../images/Bracelets/20.jpg",
- "./images/Bracelets/21.jpg"
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/19.jpg",
+        "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/20.jpg",
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/21.jpg"
 
 ],
     "description": "Stylish white gold bracelet with smooth finish.",
@@ -386,14 +387,14 @@
     "rating": 4.4
   },
   {
-    "id": 29,
+    
     "title": "Gold Bracelet",
-    "category": "Bracelet",
+    "category": "bracelet",
     "price": 200,
              "images": [
- "../images/Bracelets/22.jpg",
-        "../images/Bracelets/23.jpg",
- "../images/Bracelets/24.jpg"
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/22.jpg",
+        "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/23.jpg",
+ "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Bracelets/24.jpg"
 
 ],
     "description": "Chroma zirconium-embelllished bangle.",
@@ -401,143 +402,143 @@
     "rating": 4.5
   },
   {
-    "id": 30,
+    
     "title": "Diamond Bracelet",
-    "category": "Bracelet",
+    "category": "bracelet",
     "price": 450,
     "images": [
-      "../images/Earrings/Diamond Bracelet.jpg",
-      "../images/Earrings/Diamond Bracelet2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Diamond%20Bracelet.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Diamond%20Bracelet2.jpg"
     ],
     "description": "Luxury diamond bracelet with sparkling finish.",
     "stock_quantity": 10,
     "rating": 4.9
   },
   {
-    "id": 31,
+    
     "title": "Gold Earrings",
-    "category": "Earrings",
+    "category": "earrings",
     "price": 180,
     "images": [
-      "../images/Earrings/Gold Earrings1.jpg",
-      "../images/Earrings/Gold Earrings2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Gold%20Earrings1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Gold%20Earrings2.jpg"
     ],
     "description": "Minimal gold earrings with elegant finish.",
     "stock_quantity": 25,
     "rating": 4.3
   },
   {
-    "id": 32,
+   
     "title": "Stud Earrings",
-    "category": "Earrings",
+    "category": "earrings",
     "price": 90,
     "images": [
-      "../images/Earrings/Stud Earrings1.jpg",
-      "../images/Earrings/Stud Earrings2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Stud%20Earrings1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Stud%20Earrings2.jpg"
     ],
     "description": "Simple stud earrings for daily use.",
     "stock_quantity": 40,
     "rating": 4.1
   },
   {
-    "id": 33,
+    
     "title": "Hoop Earrings",
-    "category": "Earrings",
+    "category": "earrings",
     "price": 110,
     "images": [
-      "../images/Earrings/Hoop Earrings1.jpg",
-      "../images/Earrings/Hoop Earrings2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Hoop%20Earrings1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Hoop%20Earrings2.jpg"
     ],
     "description": "Trendy hoop earrings for modern style.",
     "stock_quantity": 30,
     "rating": 4.4
   },
   {
-    "id": 34,
+    
     "title": "Crystal Earrings",
-    "category": "Earrings",
+    "category": "earrings",
     "price": 130,
     "images": [
-      "../images/Earrings/Crystal Earrings1.jpg",
-      "../images/Earrings/Crystal Earrings2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Crystal%20Earrings1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Crystal%20Earrings2.jpg"
     ],
     "description": "Shiny crystal earrings for evening outfits.",
     "stock_quantity": 20,
     "rating": 4.5
   },
   {
-    "id": 35,
+    
     "title": "Drop Earrings",
-    "category": "Earrings",
+    "category": "earrings",
     "price": 170,
     "images": [
-      "../images/Earrings/Drop Earrings1.jpg",
-      "../images/Earrings/Drop Earrings2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Drop%20Earrings1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Drop%20Earrings2.jpg"
     ],
     "description": "Elegant drop earrings for special events.",
     "stock_quantity": 15,
     "rating": 4.6
   },
   {
-    "id": 36,
+    
     "title": "Vintage Earrings",
-    "category": "Earrings",
+    "category": "earrings",
     "price": 140,
     "images": [
-      "../images/Earrings/Vintage Earrings1.jpg",
-      "../images/Earrings/Vintage Earrings2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Vintage%20Earrings1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Vintage%20Earrings2.jpg"
     ],
     "description": "Vintage style earrings with classic details.",
     "stock_quantity": 18,
     "rating": 4.3
   },
   {
-    "id": 37,
+    
     "title": "Statement Earrings",
-    "category": "Earrings",
+    "category": "earrings",
     "price": 220,
     "images": [
-      "../images/Earrings/Statement Earrings1.jpg",
-      "../images/Earrings/Statement Earrings2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Statement%20Earrings1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Statement%20Earrings2.jpg"
     ],
     "description": "Bold statement earrings for standout looks.",
     "stock_quantity": 12,
     "rating": 4.7
   },
   {
-    "id": 38,
+    
     "title": "Pearl Earrings",
-    "category": "Earrings",
+    "category": "earrings",
     "price": 150,
     "images": [
-      "../images/Earrings/Pearl Earrings1.jpg",
-      "../images/Earrings/Pearl Earrings2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Pearl%20Earrings1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earringsngs/Pearl%20Earrings2.jpg"
     ],
     "description": "Elegant pearl earrings perfect for formal occasions.",
     "stock_quantity": 40,
     "rating": 4.5
   },
   {
-    "id": 39,
+    
     "title": "Diamond Stud Earrings",
-    "category": "Earrings",
+    "category": "earrings",
     "price": 500,
     "images": [
-      "../images/Earrings/Diamond Stud Earrings1.jpg",
-      "../images/Earrings/Diamond Stud Earrings2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Diamond%20Stud%20Earrings1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Diamond%20Stud%20Earrings2.jpg"
     ],
     "description": "Classic diamond stud earrings with high quality.",
     "stock_quantity": 12,
     "rating": 4.9
   },
   {
-    "id": 40,
+    
     "title": "Elegant Earrings",
-    "category": "Earrings",
+    "category": "earrings",
     "price": 200,
     "images": [
-      "../images/Earrings/Elegant Earrings1.jpg",
-      "../images/Earrings/Elegant Earrings2.jpg"
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Elegant%20Earrings1.jpg",
+      "https://raw.githubusercontent.com/BasmallaMabrouk/jewelry-store/refs/heads/main/images/Earrings/Elegant%20Earrings2.jpg"
     ],
     "description": "Elegant earrings with modern design for every occasion.",
     "stock_quantity": 20,
