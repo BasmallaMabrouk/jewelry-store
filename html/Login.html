@@ -28,8 +28,12 @@
                 <button type="submit" class="prime-btn">Sign In</button>
             </form>
 
-        </div>
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="./Register.html">Register Now</a></p>
+            </div>
+            </div>
     </section>
+
     <script type="module">
         import { loginUser } from "../js/Auth.js";
 
@@ -39,7 +43,7 @@
             const pass = document.getElementById('logPassword').value;
             loginUser(email, pass);
         });
-        // <script src="../js/Auth.js"></script>
+    </script>
 </body>
 
 </html>
