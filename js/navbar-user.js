@@ -15,9 +15,10 @@ onAuthStateChanged(auth, async (user) => {
 
             userBox.innerHTML = `
                 <span class="user-greet">
-                    Hi, <b>${role === "admin" ? "Admin" : "User"}</b> ${name}
+                    Hi, <b>${role === "admin" ? "Admin" : "User"} ${name} </b>
                 </span>
             `;
+            userBox.style.color = "#f6f0eb";
         }
     } else {
         userBox.innerHTML = `<a href="Login.html" id="loginBtn">Login</a>`;
