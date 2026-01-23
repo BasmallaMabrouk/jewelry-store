@@ -15,23 +15,17 @@ if (user) {
     let name = "User";
     let role = "user";
 
-    if (userDoc.exists()) {
-        const data = userDoc.data();
-        name = data.displayName || "Admin";
-        role = data.role || "user";
-    }
+        if (userDoc.exists()) {
+            const data = userDoc.data();
+            const name = data.displayName;
+            const role = data.role;
 
-    if (role === 'admin') {
-        
-        navAuth.innerHTML = `
-            <div class="admin-dropdown">
-                <span class="admin-name">Hi Admin ${name} <i class="fa-solid fa-chevron-down"></i></span>
-                <div class="dropdown-content">
-                    <a href="AdminDashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
-                    <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
-                </div>
-            </div>`;
-        navRegister.innerHTML = ""; 
+            userBox.innerHTML = `
+                <span class="user-greet">
+                    Hi, <b>${role === "admin" ? "Admin" : "User"}</b> ${name}
+                </span>
+            `;
+        }
     } else {
        
         navAuth.innerHTML = `<span>Hi ${name}</span>`;

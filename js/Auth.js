@@ -12,7 +12,7 @@ export async function registerUser(email, password, name) {
             uid: user.uid,
             displayName: name,
             email: email,
-            role: "user" 
+            role: "user"
         });
 
         alert("تم إنشاء الحساب بنجاح!");
@@ -31,14 +31,18 @@ export async function loginUser(email, password) {
 
         // نجيب بياناته عشان نعرف هو أدمن ولا مستخدم
         const userDoc = await getDoc(doc(db, "users", user.uid));
-        
+
         if (userDoc.exists()) {
             const userData = userDoc.data();
             localStorage.setItem("userRole", userData.role);
 
             if (userData.role == "admin") {
                 alert("Welcome Admin!");
+<<<<<<< HEAD
                 window.location.href = "Home.html"; 
+=======
+                window.location.href = "AdminDashboard.html";
+>>>>>>> 4625cccbcece65ec7aa6c16364df556d604c00c8
             } else {
                 alert("Login Successful!");
 
