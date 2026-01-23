@@ -10,10 +10,10 @@ async function updateNavbar() {
     const user = auth.currentUser;
 
 
-if (user) {
-    const userDoc = await getDoc(doc(db, "users", user.uid));
-    let name = "User";
-    let role = "user";
+    if (user) {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        let name = "User";
+        let role = "user";
 
         if (userDoc.exists()) {
             const data = userDoc.data();
@@ -22,17 +22,18 @@ if (user) {
 
             userBox.innerHTML = `
                 <span class="user-greet">
-                    Hi, <b>${role === "admin" ? "Admin" : "User"}</b> ${name}
+                   Hi, <b>${role === "admin" ? "Admin" : "User"} ${name} </b>
                 </span>
             `;
+            userBox.style.color = "#f6f0eb";
         }
     } else {
-       
+
         navAuth.innerHTML = `<span>Hi ${name}</span>`;
         navRegister.innerHTML = `<a href="#" id="logoutBtn">Log Out</a>`;
     }
 
- 
+
     document.getElementById("logoutBtn")?.addEventListener("click", async (e) => {
         e.preventDefault();
         await signOut(auth);
