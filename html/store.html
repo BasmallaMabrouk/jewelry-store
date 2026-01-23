@@ -9,8 +9,7 @@
     <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script type="module" src="../js/navbar-user.js"></script>
 
     <style>
@@ -20,24 +19,32 @@
             margin: 5px 0;
             font-family: 'Bitter', serif;
         }
+        .stock-number { font-weight: bold; }
 
-        .stock-number {
-            font-weight: bold;
-        }
-
-        /* Ensure buttons are stacked nicely */
         .product-buttons {
             display: flex;
             flex-direction: column;
             gap: 8px;
             margin-top: 10px;
         }
+        /* ستايل إضافي لزر التفاصيل ليكون مختلفاً عن زر الإضافة */
+        .details-btn {
+            background-color: transparent;
+            border: 1px solid #8D7B68;
+            color: #8D7B68;
+            padding: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .details-btn:hover {
+            background-color: #8D7B68;
+            color: white;
+        }
     </style>
 </head>
 
 <body class="store-page">
     <header>
-
         <div class="Bar">
             <li id="userBox">
                 <a style="color: #f6f0eb;" href="../html/Login.html" id="loginBtn">Login</a>
@@ -49,12 +56,11 @@
                 <div class="jewelry"><a href="./Earrings.html">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
                 <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
                 <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
-
             </nav>
-            <div class="cart"> <a href="../html/Card.html">Cart</a> <i class="fa-solid fa-cart-arrow-down"
-                    style="color: #f6f0eb;"></i></div>
+            <div class="cart"> <a href="../html/Card.html">Cart</a> <i class="fa-solid fa-cart-arrow-down" style="color: #f6f0eb;"></i></div>
         </div>
     </header>
+
     <img src="../images/tttt.png" class="imagefadedd">
 
     <main class="store-main">
@@ -67,16 +73,10 @@
     </footer>
 
     <script type="module">
-
-        /* ===============================
-         */
         import { db } from "../js/CDNFirebase.js";
-        import {
-            collection,
-            getDocs
-        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // 1. Unified Cart Logic
+        // 1. دالة الإضافة للكارت
         function quickAdd(id, title, price, image, stock) {
             let cart = JSON.parse(localStorage.getItem('myCart')) || [];
             const existingIndex = cart.findIndex(item => item.id === id);
@@ -89,14 +89,7 @@
                     return;
                 }
             } else {
-                cart.push({
-                    id: id,
-                    title: title,
-                    price: price,
-                    image: image,
-                    quantity: 1,
-                    maxStock: stock
-                });
+                cart.push({ id, title, price, image, quantity: 1, maxStock: stock });
             }
 
             localStorage.setItem('myCart', JSON.stringify(cart));
@@ -104,105 +97,93 @@
         }
         window.quickAdd = quickAdd;
 
-
-        /* ===============================
-            (JSON LOCAL FILE)
-        
-        ================================ */
-
-        // var xhr = new XMLHttpRequest();
-        // xhr.open("GET", "../file.json");
-        // xhr.send();
-
-        // xhr.addEventListener('readystatechange', function () {
-        //     if (xhr.readyState == 4 && xhr.status == 200) {
-        //         var products = JSON.parse(xhr.responseText);
-        //         renderProducts(products);
-        //     }
-        // });
-
-        /* ===============================
-           (Firebase Firestore)
-        ================================ */
-
+        // 2. دالة جلب البيانات
         async function getProductsFromFirebase() {
-            const snapshot = await getDocs(collection(db, "products"));
-            const products = [];
-
-            snapshot.forEach(doc => {
-                products.push({
-                    id: doc.id,
-                    ...doc.data() //spread data
+            try {
+                const snapshot = await getDocs(collection(db, "products"));
+                const products = [];
+                snapshot.forEach(doc => {
+                    products.push({ id: doc.id, ...doc.data() });
                 });
-            });
-
-            return products;
+                return products;
+            } catch (error) {
+                console.error("Error loading products:", error);
+                return [];
+            }
         }
 
-        /* ===============================
-            Products 
-        ================================ */
-        function renderProducts(products) {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = "";
+        // 3. دالة بناء الكارت (الـ Template)
+        function createCardHTML(p) {
+            if (!p) return '';
+            const mImg = (p.images && p.images[0]) ? p.images[0] : '';
+            const hImg = (p.images && p.images[1]) ? p.images[1] : mImg;
 
-            let index = 0;
-
-            for (const product of products) {
-                function createCard(p) {
-                    if (!p) return '';
-                    let mImg = p.images[0] || '';
-                    let hImg = p.images[1] || mImg;
-
-                    return `
-                <div class="product-card">
-                    <div class="product-img-box">
-                        <img src="${mImg}" class="img-main">
-                        <img src="${hImg}" class="img-hover">
+            return `
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="${mImg}" class="img-main">
+                    <img src="${hImg}" class="img-hover">
+                </div>
+                <div class="product-info">
+                    <h3>${p.title}</h3>
+                    <div class="price-row">
+                        <span class="price">$${p.price}</span>
+                        <span class="rating">⭐ ${p.rating}</span>
                     </div>
-                    <div class="product-info">
-                        <h3>${p.title}</h3>
-                        <div class="price-row">
-                            <span class="price">$${p.price}</span>
-                            <span class="rating">⭐ ${p.rating}</span>
-                        </div>
-                        <p class="stock-label">Stock: <span class="stock-number">${p.stock_quantity}</span></p>
+                    <p class="stock-label">Stock: <span class="stock-number">${p.stock_quantity}</span></p>
+                    <div class="product-buttons">
                         <button class="add-to-cart-btn" data-id="${p.id}">
                             Add to Cart
                         </button>
+                        <a href="./details.html?id=${p.id}">
+                            <button class="details-btn">View Details</button>
+                        </a>
                     </div>
-                </div>`;
-                }
+                </div>
+            </div>`;
+        }
 
-                grid.innerHTML += createCard(product);
-                grid.innerHTML += createCard(products[index + 10]);
-                grid.innerHTML += createCard(products[index + 20]);
-                grid.innerHTML += createCard(products[index + 30]);
+        // 4. دالة العرض الرئيسية
+        function renderProducts(products) {
+            const grid = document.getElementById('product-grid');
+            if (!grid) return;
+            grid.innerHTML = "";
 
-                index++;
-                if (index == 11) break;
+            let htmlContent = "";
+            let limit = Math.min(products.length, 11); // لضمان عدم حدوث Error لو المنتجات أقل من 11
+
+            for (let i = 0; i < limit; i++) {
+                htmlContent += createCardHTML(products[i]);
+                if (products[i + 10]) htmlContent += createCardHTML(products[i + 10]);
+                if (products[i + 20]) htmlContent += createCardHTML(products[i + 20]);
+                if (products[i + 30]) htmlContent += createCardHTML(products[i + 30]);
             }
 
-            // بعد ما نضيف الـ HTML للصفحة
+            grid.innerHTML = htmlContent;
+
+            // تفعيل أزرار الكارت
             const buttons = grid.querySelectorAll('.add-to-cart-btn');
             buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const id = btn.dataset.id;
+                btn.onclick = () => {
+                    const id = btn.getAttribute('data-id');
                     const product = products.find(p => p.id === id);
                     if (product) {
                         quickAdd(product.id, product.title, product.price, product.images[0], product.stock_quantity);
                     }
-                });
+                };
             });
         }
 
-        (async function () {
-            const products = await getProductsFromFirebase(); // جلب المنتجات من Firebase
-            renderProducts(products); // عرضهم
+        // تشغيل العملية
+        (async function init() {
+            const products = await getProductsFromFirebase();
+            if (products.length > 0) {
+                renderProducts(products);
+            } else {
+                document.getElementById('product-grid').innerHTML = "<p>No products found.</p>";
+            }
         })();
-
-        ;
     </script>
 </body>
-
 </html>
+
