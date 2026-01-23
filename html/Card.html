@@ -7,84 +7,110 @@
     <title>Your Cart - Girl'z Power</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script type="module" src="../js/navbar-user.js"></script>
 
     <style>
-        .cart-container { 
-            max-width: 900px; 
-            margin: 150px auto 50px; 
-            padding: 30px; 
-            background: rgba(255, 255, 255, 0.9); 
-            border-radius: 20px; 
+        .cart-container {
+            max-width: 900px;
+            margin: 150px auto 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(112, 92, 73, 0.1);
         }
-        
-        .cart-item { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            padding: 20px 0; 
-            border-bottom: 1px solid #EAE3D9; 
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid #EAE3D9;
         }
-        
-        .cart-item:last-child { border-bottom: none; }
-        
-        .cart-item img { 
-            width: 100px; 
-            height: 100px; 
-            object-fit: cover; 
-            border-radius: 12px; 
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 12px;
             background: #fff;
         }
 
-        .cart-item-info { flex: 1; margin-left: 20px; }
-        .cart-item-info h4 { font-family: 'Bitter', serif; color: #4A3728; margin-bottom: 5px; }
-        
-        .cart-total { 
-            text-align: right; 
-            padding: 25px; 
-            font-size: 1.8rem; 
-            color: #705C49; 
+        .cart-item-info {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .cart-item-info h4 {
+            font-family: 'Bitter', serif;
+            color: #4A3728;
+            margin-bottom: 5px;
+        }
+
+        .cart-total {
+            text-align: right;
+            padding: 25px;
+            font-size: 1.8rem;
+            color: #705C49;
             font-family: 'Playfair Display', serif;
             font-weight: bold;
         }
 
-        .checkout-btn { 
-            width: 100%; 
-            padding: 18px; 
-            background: #705C49; 
-            color: #F3EEE4; 
-            border: none; 
-            cursor: pointer; 
-            font-size: 1rem; 
-            border-radius: 12px; 
+        .checkout-btn {
+            width: 100%;
+            padding: 18px;
+            background: #705C49;
+            color: #F3EEE4;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 12px;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: bold;
             transition: 0.3s;
         }
 
-        .checkout-btn:hover { background: #4A3728; transform: translateY(-3px); }
+        .checkout-btn:hover {
+            background: #4A3728;
+            transform: translateY(-3px);
+        }
 
-        .remove-btn { 
-            color: #a33b3b; 
-            cursor: pointer; 
-            border: 1px solid #eee; 
-            background: white; 
+        .remove-btn {
+            color: #a33b3b;
+            cursor: pointer;
+            border: 1px solid #eee;
+            background: white;
             padding: 5px 10px;
             border-radius: 5px;
             transition: 0.3s;
         }
-        .remove-btn:hover { background: #a33b3b; color: white; }
-        
-        .empty-msg { text-align: center; padding: 50px; color: #8D7B68; }
+
+        .remove-btn:hover {
+            background: #a33b3b;
+            color: white;
+        }
+
+        .empty-msg {
+            text-align: center;
+            padding: 50px;
+            color: #8D7B68;
+        }
     </style>
 </head>
 
 <body class="store-page">
     <header>
-        <div class="Bar show-sticky sticky-default">
-            <div class="login"><a href="../html/Login.html">Log In</a></div>
+
+        <div class="Bar">
+            <li id="userBox">
+                <a style="color: #f6f0eb;" href="../html/Login.html" id="loginBtn">Login</a>
+            </li>
             <nav>
                 <div><a href="./Home.html">Home</a></div>
                 <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
@@ -92,8 +118,10 @@
                 <div class="jewelry"><a href="./Earrings.html">Earrings</a><i class="fa-solid fa-gem icon"></i></div>
                 <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
                 <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
+
             </nav>
-             <div class="cart"> <a href="../html/Card.html">Cart</a> <i class="fa-solid fa-cart-arrow-down" style="color: #f6f0eb;"></i></div>
+            <div class="cart"> <a href="../html/Card.html">Cart</a> <i class="fa-solid fa-cart-arrow-down"
+                    style="color: #f6f0eb;"></i></div>
         </div>
     </header>
 
@@ -101,7 +129,7 @@
         <div class="cart-container">
             <h1 class="section-title">Your Shopping Bag</h1>
             <div id="cart-items-list">
-                </div>
+            </div>
             <div class="cart-total" id="cart-total-price">Total: $0</div>
             <button class="checkout-btn" id="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
         </div>
@@ -113,20 +141,20 @@
 
     <script>
         function displayCart() {
-    const cart = JSON.parse(localStorage.getItem('myCart')) || [];
-    const list = document.getElementById('cart-items-list');
-    let total = 0;
+            const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            const list = document.getElementById('cart-items-list');
+            let total = 0;
 
-    if (cart.length === 0) {
-        list.innerHTML = "<p class='empty-msg'>Your bag is empty.</p>";
-        document.getElementById('cart-total-price').innerText = "Total: $0";
-        return;
-    }
+            if (cart.length === 0) {
+                list.innerHTML = "<p class='empty-msg'>Your bag is empty.</p>";
+                document.getElementById('cart-total-price').innerText = "Total: $0";
+                return;
+            }
 
-    list.innerHTML = "";
-    cart.forEach((item, index) => {
-        total += item.price * item.quantity;
-        list.innerHTML += `
+            list.innerHTML = "";
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                list.innerHTML += `
             <div class="cart-item">
                 <img src="${item.image}">
                 <div class="cart-item-info">
@@ -143,25 +171,25 @@
                 <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
             </div>
         `;
-    });
+            });
 
-    document.getElementById('cart-total-price').innerText = "Total: $" + total.toFixed(2);
-}
+            document.getElementById('cart-total-price').innerText = "Total: $" + total.toFixed(2);
+        }
 
-function updateQty(index, change) {
-    let cart = JSON.parse(localStorage.getItem('myCart'));
-    let item = cart[index];
-    let newQty = item.quantity + change;
+        function updateQty(index, change) {
+            let cart = JSON.parse(localStorage.getItem('myCart'));
+            let item = cart[index];
+            let newQty = item.quantity + change;
 
-    // Ensure qty is at least 1 and doesn't exceed stock
-    if (newQty >= 1 && newQty <= item.maxStock) {
-        item.quantity = newQty;
-        localStorage.setItem('myCart', JSON.stringify(cart));
-        displayCart();
-    } else if (newQty > item.maxStock) {
-        alert("Maximum stock reached!");
-    }
-}
+            // Ensure qty is at least 1 and doesn't exceed stock
+            if (newQty >= 1 && newQty <= item.maxStock) {
+                item.quantity = newQty;
+                localStorage.setItem('myCart', JSON.stringify(cart));
+                displayCart();
+            } else if (newQty > item.maxStock) {
+                alert("Maximum stock reached!");
+            }
+        }
 
         function removeItem(index) {
             let cart = JSON.parse(localStorage.getItem('myCart'));
@@ -172,7 +200,7 @@ function updateQty(index, change) {
 
         function checkout() {
             alert("Thank you for your purchase! Processing your order...");
-            localStorage.removeItem('myCart'); 
+            localStorage.removeItem('myCart');
             window.location.href = "./Home.html";
         }
 
