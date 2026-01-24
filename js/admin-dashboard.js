@@ -230,17 +230,11 @@ try{
      if(col=='green')
  { 
     status_value=document.getElementById("status").value= 'approved'
-    // document.getElementById("red").style.display= "none"
-    document.getElementById("red").classList.add("disappeare")
-     document.getElementById("green").classList.remove("disappeare")
  }
 
  else
 {
   status_value=document.getElementById("status").value= 'rejected'
-//   document.getElementById("green").style.display= "none"
-  document.getElementById("red").classList.remove("disappeare")
-  document.getElementById("green").classList.add("disappeare")
   
 }
  await updateDoc(doc(db, "orders", id), {status:status_value});
