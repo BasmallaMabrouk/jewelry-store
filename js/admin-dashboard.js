@@ -219,7 +219,7 @@ window.deleteCategory = async (id) => {
 
 
 
-  window.approve = async function approve( col , obj, id) {
+  window.approve = async function approve( col, id) {
  //var right=document.querySelector('i[style="color: green"]');
 // console.log(right);
 
@@ -280,8 +280,8 @@ async function renderOrders() {
                     <td><span class="status-badge" style="padding: 5px 12px; border-radius: 20px; background: #D6C5A9; color: #705C49;" id="status">${o.status }</span></td>
                     <td> 
                     <span > 
-                    <i id="green" class="fa-solid fa-circle-check" style="color: green;margin-right:10px" onclick= "approve('green' , '${o}' , '${docSnap.id}')"></i>
-                   <i id="red" class="fa-solid fa-circle-xmark" style="color: red;" onclick= "approve('red' , '${o}')"></i>
+                    <i id="green" class="fa-solid fa-circle-check" style="color: green;margin-right:10px" onclick= "approve('green' , '${docSnap.id}')"></i>
+                   <i id="red" class="fa-solid fa-circle-xmark" style="color: red;" onclick= "approve('red' , '${docSnap.id}')"></i>
                    </span >
                        </td>
                 </tr>`;
