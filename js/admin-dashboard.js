@@ -230,13 +230,18 @@ try{
      if(col=='green')
  { 
     status_value=document.getElementById("status").value= 'approved'
-    document.getElementById("red").display= "none"
+    // document.getElementById("red").style.display= "none"
+    document.getElementById("red").classList.add("disappeare")
+     document.getElementById("green").classList.remove("disappeare")
  }
 
  else
 {
   status_value=document.getElementById("status").value= 'rejected'
-  document.getElementById("green").display= "none"
+//   document.getElementById("green").style.display= "none"
+  document.getElementById("red").classList.remove("disappeare")
+  document.getElementById("green").classList.add("disappeare")
+  
 }
  await updateDoc(doc(db, "orders", id), {status:status_value});
  renderOrders()
@@ -278,13 +283,28 @@ async function renderOrders() {
                     <td>${o.customerEmail || 'Guest'}</td>
                     <td>$${o.totalAmount}</td>
                     <td><span class="status-badge" style="padding: 5px 12px; border-radius: 20px; background: #D6C5A9; color: #705C49;" id="status">${o.status }</span></td>
-                    <td> 
-                    <span > 
-                    <i id="green" class="fa-solid fa-circle-check" style="color: green;margin-right:10px" onclick= "approve('green' , '${docSnap.id}')"></i>
-                   <i id="red" class="fa-solid fa-circle-xmark" style="color: red;" onclick= "approve('red' , '${docSnap.id}')"></i>
-                   </span >
-                       </td>
-                </tr>`;
+                    <td> `
+                    if(o.status == 'approved'){
+                        tableHTML += `
+                    <span> 
+                    <i id="green" class="fa-solid fa-circle-check" style="color: green;margin-right:10px" onclick= "approve('green' , '${docSnap.id}')"
+                    }"></i>
+                        `
+                    }
+                    else if(o.status == 'rejected'){
+                        tableHTML += `  <i id="red" class="fa-solid fa-circle-xmark" style="color: red;" onclick= "approve('red' , '${docSnap.id}')"></i>
+                   </span >                   </td>
+                </tr>`
+                    }
+                    else{
+                        tableHTML += `<span> 
+                    <i id="green" class="fa-solid fa-circle-check" style="color: green;margin-right:10px" onclick= "approve('green' , '${docSnap.id}')"
+}"></i>
+                    <i id="red" class="fa-solid fa-circle-xmark" style="color: red;" onclick= "approve('red' , '${docSnap.id}')"></i>
+                   </span >                   </td>
+                </tr>`
+                    }
+;
         });
             
 

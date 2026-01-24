@@ -1233,3 +1233,8 @@ drop down at log in
 .delete-btn { background: #E74C3C; color: white; }
 
 .edit-btn:hover, .delete-btn:hover { opacity: 0.7; }
+
+.disappeare{
+    display: none;
+    /* text-align: center; */
+}
