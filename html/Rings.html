@@ -9,7 +9,8 @@
     <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <script type="module" src="../js/navbar-user.js"></script>
     <style>
         .stock-label {
@@ -38,7 +39,7 @@
             left: 50%;
             bottom: 30px;
             transform: translateX(-50%);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             font-family: 'Bitter', serif;
         }
 
@@ -61,17 +62,49 @@
             font-size: 0.8rem;
         }
 
-        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
-        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
 <body class="store-page">
     <header>
         <div class="Bar">
-            <li id="userBox">
-                <a style="color: #f6f0eb;" href="../html/Login.html" id="loginBtn">Login</a>
-            </li>
+
+
+            <ul>
+
+                <li id="nav-auth">
+
+                    <a href="Login.html" id="signInLink">Sign In</a>
+                </li>
+                <li id="nav-register">
+                    <a href="Register.html" id="signUpLink">Sign Up</a>
+                </li>
+            </ul>
+
+
             <nav>
                 <div><a href="./Home.html">Home</a></div>
                 <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
@@ -80,15 +113,13 @@
                 <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
                 <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
             </nav>
-            <div class="cart"> 
-                <a href="../html/Card.html">Cart</a> 
-                <i class="fa-solid fa-cart-arrow-down" style="color: #f6f0eb;"></i>
-            </div>
+            <div class="cart"> <a href="../html/Card.html">Cart</a> <i class="fa-solid fa-cart-arrow-down"
+                    style="color: #f6f0eb;"></i></div>
         </div>
     </header>
 
     <img src="../images/tttt.png" class="imagefadedd">
-    
+
     <main>
         <section class="carts">
             <h1 class="section-title">Our Exclusive Rings</h1>
@@ -189,9 +220,9 @@
                             <span class="rating">⭐ ${product.rating || '4.8'}</span>
                         </div>
                         <p class="stock-label">
-                            ${isOutOfStock ? 
-                                '<span style="color:#e74c3c; font-weight:bold;">Out of Stock</span>' : 
-                                `Available: <span class="stock-number">${stock}</span>`}
+                            ${isOutOfStock ?
+                        '<span style="color:#e74c3c; font-weight:bold;">Out of Stock</span>' :
+                        `Available: <span class="stock-number">${stock}</span>`}
                         </p>
                         <div class="product-buttons">
                             <button class="add-to-cart-btn" 
@@ -215,4 +246,5 @@
         })();
     </script>
 </body>
+
 </html>

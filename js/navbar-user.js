@@ -15,34 +15,34 @@ async function updateNavbar() {
     const user = auth.currentUser;
 
 
-if (user) {
+    if (user) {
 
-    const userDoc = await getDoc(doc(db, "users", user.uid));
+        const userDoc = await getDoc(doc(db, "users", user.uid));
 
-    let name = "User";
+        let name = "User";
 
-    let role = "user";
-
-
-    if (userDoc.exists()) {
-
-        const data = userDoc.data();
-
-        name = data.displayName || "Admin";
-
-        role = data.role || "user";
-
-    }
+        let role = "user";
 
 
-    if (role === 'admin') {
+        if (userDoc.exists()) {
 
-      
-        navAuth.innerHTML = `
+            const data = userDoc.data();
+
+            name = data.displayName || "Admin";
+
+            role = data.role || "user";
+
+        }
+
+
+        if (role === 'admin') {
+
+
+            navAuth.innerHTML = `
 
             <div class="admin-dropdown">
 
-                <span class="admin-name">Hi Admin ${name} <i class="fa-solid fa-chevron-down"></i></span>
+                <span class="admin-name" style="color: #f6f0eb;">Hi Admin ${name} <i class="fa-solid fa-chevron-down"></i></span>
 
                 <div class="dropdown-content">
 
@@ -53,37 +53,37 @@ if (user) {
                 </div>
 
             </div>`;
-            
 
-        navRegister.innerHTML = ""; 
 
-    } else {
+            navRegister.innerHTML = "";
 
-       
+        } else {
 
-        navAuth.innerHTML = `<span>Hi ${name}</span>`;
 
-        navRegister.innerHTML = `<a href="#" id="logoutBtn">Log Out</a>`;
+
+            navAuth.innerHTML = `<span style="color: #f6f0eb;">Hi ${name}</span>`;
+
+            navRegister.innerHTML = `<a href="#" id="logoutBtn">Log Out</a>`;
+
+        }
+
+
+
+
+
+        document.getElementById("logoutBtn")?.addEventListener("click", async (e) => {
+
+            e.preventDefault();
+
+            await signOut(auth);
+
+            localStorage.removeItem("userRole");
+
+            window.location.href = "Home.html";
+
+        });
 
     }
-
-
-
-   
-
-    document.getElementById("logoutBtn")?.addEventListener("click", async (e) => {
-
-        e.preventDefault();
-
-        await signOut(auth);
-
-        localStorage.removeItem("userRole");
-
-        window.location.href = "Home.html";
-
-    });
-
-}
 
 }
 

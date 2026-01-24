@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product - Girl'z Power</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        .edit-container {
+            max-width: 800px;
+            margin: 150px auto 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(112, 92, 73, 0.1);
+            font-family: 'Bitter', serif;
+        }
+
+        .edit-container h1 {
+            margin-bottom: 20px;
+            color: #705C49;
+        }
+
+        .edit-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .edit-form label {
+            font-weight: bold;
+            color: #705C49;
+        }
+
+        .edit-form input,
+        .edit-form textarea {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #D6C5A9;
+            font-size: 1rem;
+        }
+
+        .edit-form img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .edit-form button {
+            padding: 15px;
+            background: #705C49;
+            color: #F3EEE4;
+            border: none;
+            cursor: pointer;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .edit-form button:hover {
+            background: #593f33;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="edit-container">
+            <h1>Edit Product</h1>
+            <form class="edit-form" id="edit-product-form">
+                <label>Title</label>
+                <input type="text" id="pTitle" required>
+
+                <label>Category</label>
+                <input type="text" id="pCategory">
+
+                <label>Price ($)</label>
+                <input type="number" id="pPrice" step="0.01" required>
+
+                <label>Stock Quantity</label>
+                <input type="number" id="pStock">
+
+                <label>Description</label>
+                <textarea id="pDesc" rows="4"></textarea>
+
+                <label>Image</label>
+                <img id="pImagePreview" src="" alt="Product Image">
+                <input type="file" id="pImageFile">
+                <input type="hidden" id="pOldImageUrl">
+
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </main>
+
+    <script type="module">
+        import { db } from "./CDNFirebase.js";
+        import { doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get("id"); // ID المنتج من الرابط
+
+        const pTitle = document.getElementById("pTitle");
+        const pCategory = document.getElementById("pCategory");
+        const pPrice = document.getElementById("pPrice");
+        const pStock = document.getElementById("pStock");
+        const pDesc = document.getElementById("pDesc");
+        const pImagePreview = document.getElementById("pImagePreview");
+        const pImageFile = document.getElementById("pImageFile");
+        const pOldImageUrl = document.getElementById("pOldImageUrl");
+
+        // تحميل بيانات المنتج عند فتح الصفحة
+        async function loadProduct() {
+            if (!productId) return alert("No product ID provided!");
+            const docSnap = await getDoc(doc(db, "products", productId));
+            if (!docSnap.exists()) return alert("Product not found!");
+            const p = docSnap.data();
+
+            pTitle.value = p.title || "";
+            pCategory.value = p.category || "";
+            pPrice.value = p.price || "";
+            pStock.value = p.stock_quantity || p.stock || "";
+            pDesc.value = p.description || "";
+            pImagePreview.src = p.images?.[0] || p.image || "";
+            pOldImageUrl.value = p.images?.[0] || p.image || "";
+        }
+
+        loadProduct();
+
+        // تغيير الصورة عند رفع ملف جديد
+        pImageFile.addEventListener("change", e => {
+            const file = e.target.files[0];
+            if (file) {
+                const url = URL.createObjectURL(file);
+                pImagePreview.src = url;
+                pOldImageUrl.value = url;
+            }
+        });
+
+        // حفظ التعديلات
+        document.getElementById("edit-product-form").addEventListener("submit", async e => {
+            e.preventDefault();
+            const updatedData = {
+                title: pTitle.value,
+                category: pCategory.value,
+                price: Number(pPrice.value),
+                stock_quantity: Number(pStock.value),
+                description: pDesc.value,
+                images: pOldImageUrl.value ? [pOldImageUrl.value] : []
+            };
+            await updateDoc(doc(db, "products", productId), updatedData);
+            alert("Product updated successfully!");
+            window.location.href = "./manage-products.html"; // ارجع للصفحة الرئيسية للمنتجات
+        });
+    </script>
+</body>
+
+</html>

@@ -7,7 +7,8 @@
     <title>Your Cart - Girl'z Power</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/ebe3054567.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <script type="module" src="../js/navbar-user.js"></script>
 
     <style>
@@ -88,9 +89,20 @@
 <body class="store-page">
     <header>
         <div class="Bar">
-            <li id="userBox">
-                <a style="color: #f6f0eb;" href="../html/Login.html" id="loginBtn">Login</a>
-            </li>
+
+
+            <ul>
+
+                <li id="nav-auth">
+
+                    <a href="Login.html" id="signInLink">Sign In</a>
+                </li>
+                <li id="nav-register">
+                    <a href="Register.html" id="signUpLink">Sign Up</a>
+                </li>
+            </ul>
+
+
             <nav>
                 <div><a href="./Home.html">Home</a></div>
                 <div class="jewelry"><a href="./store.html">Store</a><i class="fa-solid fa-gem icon"></i></div>
@@ -99,10 +111,8 @@
                 <div class="jewelry"><a href="./Rings.html">Rings</a><i class="fa-solid fa-gem icon"></i></div>
                 <div class="jewelry"><a href="./Bracelets.html">Bracelets</a><i class="fa-solid fa-gem icon"></i></div>
             </nav>
-            <div class="cart"> 
-                <a href="../html/Card.html">Cart</a> 
-                <i class="fa-solid fa-cart-arrow-down" style="color: #f6f0eb;"></i>
-            </div>
+            <div class="cart"> <a href="../html/Card.html">Cart</a> <i class="fa-solid fa-cart-arrow-down"
+                    style="color: #f6f0eb;"></i></div>
         </div>
     </header>
 
@@ -116,26 +126,26 @@
     </main>
 
     <!-- /* استبدلي جزء الـ <script type="module"> في ملف Card.html بهذا */ -->
-<script type="module">
-    import { db, auth } from "../js/CDNFirebase.js";
-    import { collection, addDoc, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    <script type="module">
+        import { db, auth } from "../js/CDNFirebase.js";
+        import { collection, addDoc, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-    function displayCart() {
-        const cart = JSON.parse(localStorage.getItem('myCart')) || [];
-        const list = document.getElementById('cart-items-list');
-        let total = 0;
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            const list = document.getElementById('cart-items-list');
+            let total = 0;
 
-        if (cart.length === 0) {
-            list.innerHTML = "<p style='text-align:center; padding:50px;'>Your bag is empty.</p>";
-            document.getElementById('cart-total-price').innerText = "Total: $0";
-            return;
-        }
+            if (cart.length === 0) {
+                list.innerHTML = "<p style='text-align:center; padding:50px;'>Your bag is empty.</p>";
+                document.getElementById('cart-total-price').innerText = "Total: $0";
+                return;
+            }
 
-        list.innerHTML = "";
-        cart.forEach((item, index) => {
-            total += item.price * item.quantity;
-            list.innerHTML += `
+            list.innerHTML = "";
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                list.innerHTML += `
             <div class="cart-item">
                 <img src="${item.image}">
                 <div class="cart-item-info">
@@ -149,74 +159,75 @@
                 </div>
                 <button class="remove-btn" onclick="window.removeItem(${index})">Remove</button>
             </div>`;
-        });
-        document.getElementById('cart-total-price').innerText = "Total: $" + total.toFixed(2);
-    }
+            });
+            document.getElementById('cart-total-price').innerText = "Total: $" + total.toFixed(2);
+        }
 
-    window.updateQty = (index, change) => {
-        let cart = JSON.parse(localStorage.getItem('myCart'));
-        let newQty = cart[index].quantity + change;
-        if (newQty >= 1 && newQty <= (cart[index].maxStock || 100)) {
-            cart[index].quantity = newQty;
+        window.updateQty = (index, change) => {
+            let cart = JSON.parse(localStorage.getItem('myCart'));
+            let newQty = cart[index].quantity + change;
+            if (newQty >= 1 && newQty <= (cart[index].maxStock || 100)) {
+                cart[index].quantity = newQty;
+                localStorage.setItem('myCart', JSON.stringify(cart));
+                displayCart();
+            } else if (newQty > cart[index].maxStock) {
+                alert("No more stock available!");
+            }
+        };
+
+        window.removeItem = (index) => {
+            let cart = JSON.parse(localStorage.getItem('myCart'));
+            cart.splice(index, 1);
             localStorage.setItem('myCart', JSON.stringify(cart));
             displayCart();
-        } else if (newQty > cart[index].maxStock) {
-            alert("No more stock available!");
-        }
-    };
+        };
 
-    window.removeItem = (index) => {
-        let cart = JSON.parse(localStorage.getItem('myCart'));
-        cart.splice(index, 1);
-        localStorage.setItem('myCart', JSON.stringify(cart));
-        displayCart();
-    };
-
-    async function checkout() {
-        if (!auth.currentUser) {
-            alert("🔒 Please login first!");
-            window.location.href = "./Login.html";
-            return;
-        }
-
-        const cart = JSON.parse(localStorage.getItem('myCart')) || [];
-        if (cart.length === 0) return;
-
-        const btn = document.getElementById('checkout-btn');
-        btn.disabled = true;
-        btn.innerText = "Updating Stock...";
-
-        try {
-            // 1. تحديث المخزون في Firebase لكل منتج
-            for (const item of cart) {
-                const productRef = doc(db, "products", item.id);
-                await updateDoc(productRef, {
-                    stock_quantity: increment(-item.quantity)
-                });
+        async function checkout() {
+            if (!auth.currentUser) {
+                alert("🔒 Please login first!");
+                window.location.href = "./Login.html";
+                return;
             }
 
-            // 2. إنشاء الطلب للأدمن
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            await addDoc(collection(db, "orders"), {
-                customerEmail: auth.currentUser.email,
-                items: cart,
-                totalAmount: total.toFixed(2),
-                status: "Pending",
-                timestamp: new Date()
-            });
+            const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            if (cart.length === 0) return;
 
-            alert("🎉 Order Successful!");
-            localStorage.removeItem('myCart');
-            window.location.href = "./Home.html";
+            const btn = document.getElementById('checkout-btn');
+            btn.disabled = true;
+            btn.innerText = "Updating Stock...";
 
-        } catch (error) {
-            alert("Error: " + error.message);
-            btn.disabled = false;
+            try {
+                // 1. تحديث المخزون في Firebase لكل منتج
+                for (const item of cart) {
+                    const productRef = doc(db, "products", item.id);
+                    await updateDoc(productRef, {
+                        stock_quantity: increment(-item.quantity)
+                    });
+                }
+
+                // 2. إنشاء الطلب للأدمن
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                await addDoc(collection(db, "orders"), {
+                    customerEmail: auth.currentUser.email,
+                    items: cart,
+                    totalAmount: total.toFixed(2),
+                    status: "Pending",
+                    timestamp: new Date()
+                });
+
+                alert("🎉 Order Successful!");
+                localStorage.removeItem('myCart');
+                window.location.href = "./Home.html";
+
+            } catch (error) {
+                alert("Error: " + error.message);
+                btn.disabled = false;
+            }
         }
-    }
 
-    document.getElementById('checkout-btn').onclick = checkout;
-    displayCart();
-</script>
+        document.getElementById('checkout-btn').onclick = checkout;
+        displayCart();
+    </script>
 </body>
+
 </html>
