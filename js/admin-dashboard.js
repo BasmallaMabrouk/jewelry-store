@@ -138,41 +138,82 @@ document.getElementById("productForm").onsubmit = async (e) => {
 };
 
 // --- 3. إدارة التصنيفات (Categories) ---
+
+
+// دالة عرض التصنيفات بشكل احترافي
 async function renderCategories() {
-    const querySnapshot = await getDocs(collection(db, "categories"));
-    let html = `<div class="cat-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px;">`;
-    
-    querySnapshot.forEach((docSnap) => {
-        const cat = docSnap.data();
-        html += `
-            <div class="cat-card" style="background: white; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #D6C5A9;">
-                <img src="${cat.image}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
-                <h4>${cat.name}</h4>
-                <button onclick="deleteCategory('${docSnap.id}')" style="color: #a33b3b; border: none; background: none; cursor: pointer; font-size: 1.2rem;"><i class="fa-solid fa-trash"></i></button>
-            </div>`;
-    });
-    contentArea.innerHTML = html + `</div>`;
+    try {
+        const querySnapshot = await getDocs(collection(db, "categories"));
+        let html = `<div class="cat-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; padding: 10px;">`;
+        
+        querySnapshot.forEach((docSnap) => {
+            const cat = docSnap.data();
+            const id = docSnap.id;
+            html += `
+                <div class="cat-card" style="background: white; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #D6C5A9; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s;">
+                    <img src="${cat.image || 'https://via.placeholder.com/100'}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #F3EEE4;">
+                    <h4 style="color: #705C49; margin-bottom: 15px;">${cat.name}</h4>
+                    <div style="display: flex; justify-content: center; gap: 10px;">
+                        <button onclick="openEditCategoryModal('${id}')" style="color: #4A90E2; border: none; background: none; cursor: pointer; font-size: 1.1rem;"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteCategory('${id}')" style="color: #E74C3C; border: none; background: none; cursor: pointer; font-size: 1.1rem;"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>`;
+        });
+        contentArea.innerHTML = querySnapshot.empty ? "<p style='text-align:center;'>No categories found. Add your first one!</p>" : html + `</div>`;
+    } catch (e) {
+        console.error("Error rendering categories:", e);
+    }
 }
 
+// دالة فتح مودال التعديل للكاتيجوري
+window.openEditCategoryModal = async (id) => {
+    try {
+        const docSnap = await getDoc(doc(db, "categories", id));
+        if (docSnap.exists()) {
+            const cat = docSnap.data();
+            document.getElementById("catId").value = id; // نحتاج إضافة هيدن آي دي في الـ HTML
+            document.getElementById("catName").value = cat.name;
+            document.getElementById("catImg").value = cat.image;
+            document.querySelector("#categoryModal h3").innerText = "Edit Category";
+            document.getElementById("categoryModal").style.display = "block";
+        }
+    } catch (e) { alert("Error fetching category"); }
+};
+
+// معالج فورم التصنيفات (إضافة وتعديل)
 document.getElementById("categoryForm").onsubmit = async (e) => {
     e.preventDefault();
+    const id = document.getElementById("catId")?.value; // تأكدي من إضافة هذا الحقل في الـ HTML
     const catData = {
         name: document.getElementById("catName").value,
         image: document.getElementById("catImg").value
     };
+    
     try {
-        await addDoc(collection(db, "categories"), catData);
+        if (id && id !== "") {
+            await updateDoc(doc(db, "categories", id), catData);
+            alert("Category updated!");
+        } else {
+            await addDoc(collection(db, "categories"), catData);
+            alert("Category added!");
+        }
         document.getElementById("categoryModal").style.display = "none";
+        document.getElementById("categoryForm").reset();
+        if(document.getElementById("catId")) document.getElementById("catId").value = "";
         renderCategories();
-    } catch (e) { alert("Error adding category"); }
+    } catch (e) { alert("Error saving category"); }
 };
 
 window.deleteCategory = async (id) => {
-    if (confirm("Delete this category?")) {
-        await deleteDoc(doc(db, "categories", id));
-        renderCategories();
+    if (confirm("Are you sure you want to delete this category?")) {
+        try {
+            await deleteDoc(doc(db, "categories", id));
+            renderCategories();
+        } catch (e) { alert("Error deleting category"); }
     }
 };
+
+
 
 // --- 4. عرض الطلبات (Orders) ---
 async function renderOrders() {

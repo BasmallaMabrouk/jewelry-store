@@ -95,12 +95,16 @@
         <span onclick="closeModals()" style="float:right; cursor:pointer; font-size:24px;">&times;</span>
         <h3>Add New Category</h3>
         <form id="categoryForm">
+            <input type="hidden" id="catId"> 
+            
             <input type="text" id="catName" placeholder="Category Name" required>
             <input type="text" id="catImg" placeholder="Category Image URL" required>
-            <button type="submit" class="add-new-btn" style="width:100%">Add Category</button>
+            <button type="submit" class="add-new-btn" style="width:100%">Save Category</button>
         </form>
     </div>
 </div>
+
+
 
 <script type="module" src="../js/admin-dashboard.js"></script>
 
