@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Product Details</title>
@@ -14,11 +15,34 @@
             background: white;
             border-radius: 20px;
         }
-        .details-left { flex: 1; }
-        .details-left img { width: 100%; border-radius: 15px; }
-        .details-right { flex: 1; display: flex; flex-direction: column; gap: 20px; }
-        .details-price { font-size: 2rem; color: #705C49; font-weight: bold; }
-        .stock-tag { color: #8D7B68; font-style: italic; }
+
+        .details-left {
+            flex: 1;
+        }
+
+        .details-left img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .details-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .details-price {
+            font-size: 2rem;
+            color: #705C49;
+            font-weight: bold;
+        }
+
+        .stock-tag {
+            color: #8D7B68;
+            font-style: italic;
+        }
+
         .buy-btn {
             padding: 15px;
             background: #705C49;
@@ -29,11 +53,12 @@
         }
     </style>
 </head>
+
 <body class="store-page">
     <div id="details-content" class="details-container">
     </div>
 
-<script>
+    <!-- <script>
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 
@@ -112,6 +137,90 @@ function addToCart(product) {
             input.value = val;
         }
     }
-</script>
+</script> -->
+    <script type="module">
+        import { db } from "../js/CDNFirebase.js";
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        async function loadProduct() {
+            if (!productId) return;
+
+            const docRef = doc(db, "products", productId);
+            const snap = await getDoc(docRef);
+
+            if (!snap.exists()) {
+                document.getElementById("details-content").innerHTML = "<p>Product not found.</p>";
+                return;
+            }
+
+            const product = snap.data();
+
+            const img1 = product.images?.[0] || product.image || "";
+            const img2 = product.images?.[1] || img1;
+
+            document.getElementById('details-content').innerHTML = `
+        <div class="details-left">
+            <div class="details-img-wrapper">
+                <img src="${img1}" class="details-img-main">
+                <img src="${img2}" class="details-img-hover">
+            </div>
+        </div>
+
+        <div class="details-right">
+            <h1 class="prod-title">${product.title}</h1>
+            <p class="details-price">$${product.price}</p>
+            <hr>
+            <p class="description">${product.description || ''}</p>
+
+            <div class="purchase-section">
+                <label>Quantity:</label>
+                <div class="quantity-controls">
+                    <button onclick="changeQty(-1)">-</button>
+                    <input type="number" id="qty" value="1" min="1" max="${product.stock_quantity || 1}">
+                    <button onclick="changeQty(1)">+</button>
+                </div>
+                <p class="stock-status">Available Stock: <strong>${product.stock_quantity || 0}</strong></p>
+                <button class="buy-btn" onclick='addToCart({
+                    id: "${productId}",
+                    title: "${product.title}",
+                    price: ${product.price},
+                    image: "${img1}"
+                })'>Add to Cart</button>
+            </div>
+        </div>
+    `;
+        }
+
+        loadProduct();
+
+        function changeQty(amount) {
+            const input = document.getElementById('qty');
+            let val = parseInt(input.value) + amount;
+            if (val >= 1 && val <= input.max) {
+                input.value = val;
+            }
+        }
+
+        function addToCart(product) {
+            const qty = parseInt(document.getElementById('qty').value);
+            let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+
+            const existingIndex = cart.findIndex(item => item.id === product.id);
+
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += qty;
+            } else {
+                cart.push({ ...product, quantity: qty });
+            }
+
+            localStorage.setItem('myCart', JSON.stringify(cart));
+            alert("Added to cart successfully!");
+        }
+    </script>
+
 </body>
+
 </html>
