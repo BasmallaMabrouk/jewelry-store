@@ -219,25 +219,32 @@ window.deleteCategory = async (id) => {
 
 
 
-  window.approve = async function approve( col , obj) {
+  window.approve = async function approve( col , obj, id) {
  //var right=document.querySelector('i[style="color: green"]');
 // console.log(right);
 
-  
-var id =doc.getElementById(obj.id).value;
- if(col=='green')
- { 
-    obj.status='approved'
 
+// var id =doc.getElementById(obj.id).value;
+try{
+    var status_value;
+     if(col=='green')
+ { 
+    status_value=document.getElementById("status").value= 'approved'
+    document.getElementById("red").display= "none"
  }
 
  else
-    {
+{
+  status_value=document.getElementById("status").value= 'rejected'
+  document.getElementById("green").display= "none"
+}
+ await updateDoc(doc(db, "orders", id), {status:status_value});
+ renderOrders()
+}
+catch(e){
+    console.error(e);
+}
 
-  obj.status='rejected'
-      
- }
- await updateDoc(doc(db, "orders", id), o);
 
 }
 
@@ -270,11 +277,11 @@ async function renderOrders() {
                     <td>#${docSnap.id.slice(0, 6)}</td>
                     <td>${o.customerEmail || 'Guest'}</td>
                     <td>$${o.totalAmount}</td>
-                    <td><span class="status-badge" style="padding: 5px 12px; border-radius: 20px; background: #D6C5A9; color: #705C49;">${o.status }</span></td>
+                    <td><span class="status-badge" style="padding: 5px 12px; border-radius: 20px; background: #D6C5A9; color: #705C49;" id="status">${o.status }</span></td>
                     <td> 
                     <span > 
-                    <i class="fa-solid fa-circle-check" style="color: green;margin-right:10px" onclick= approve(green , ${o})></i>
-                   <i class="fa-solid fa-circle-xmark" style="color: red;" onclick= approve(red , ${o})></i>
+                    <i id="green" class="fa-solid fa-circle-check" style="color: green;margin-right:10px" onclick= "approve('green' , '${o}' , '${docSnap.id}')"></i>
+                   <i id="red" class="fa-solid fa-circle-xmark" style="color: red;" onclick= "approve('red' , '${o}')"></i>
                    </span >
                        </td>
                 </tr>`;
