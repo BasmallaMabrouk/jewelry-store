@@ -12,12 +12,7 @@ async function updateNavbar() {
 
     const navRegister = document.getElementById("nav-register");
 
-
-
     const user = auth.currentUser;
-
-
-
 
 
 if (user) {
@@ -27,7 +22,6 @@ if (user) {
     let name = "User";
 
     let role = "user";
-
 
 
     if (userDoc.exists()) {
@@ -41,11 +35,9 @@ if (user) {
     }
 
 
-
     if (role === 'admin') {
 
       
-
         navAuth.innerHTML = `
 
             <div class="admin-dropdown">
@@ -61,6 +53,7 @@ if (user) {
                 </div>
 
             </div>`;
+            
 
         navRegister.innerHTML = ""; 
 

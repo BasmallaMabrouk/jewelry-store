@@ -216,6 +216,34 @@ window.deleteCategory = async (id) => {
 
 
 // --- 4. عرض الطلبات (Orders) ---
+
+
+
+  window.approve = async function approve( col , obj) {
+ //var right=document.querySelector('i[style="color: green"]');
+// console.log(right);
+
+  
+var id =doc.getElementById(obj.id).value;
+ if(col=='green')
+ { 
+    obj.status='approved'
+
+ }
+
+ else
+    {
+
+  obj.status='rejected'
+      
+ }
+ await updateDoc(doc(db, "orders", id), o);
+
+}
+
+
+
+
 async function renderOrders() {
     try {
         // جلب الطلبات (تأكدي أن الحقل في الـ Checkout هو 'timestamp' للترتيب)
@@ -230,6 +258,7 @@ async function renderOrders() {
                         <th>Customer</th>
                         <th>Total</th>
                         <th>Status</th>
+                        <th> Confirm </th>
                     </tr>
                 </thead>
                 <tbody>`;
@@ -241,11 +270,21 @@ async function renderOrders() {
                     <td>#${docSnap.id.slice(0, 6)}</td>
                     <td>${o.customerEmail || 'Guest'}</td>
                     <td>$${o.totalAmount}</td>
-                    <td><span class="status-badge" style="padding: 5px 12px; border-radius: 20px; background: #D6C5A9; color: #705C49;">${o.status || 'Pending'}</span></td>
+                    <td><span class="status-badge" style="padding: 5px 12px; border-radius: 20px; background: #D6C5A9; color: #705C49;">${o.status }</span></td>
+                    <td> 
+                    <span > 
+                    <i class="fa-solid fa-circle-check" style="color: green;margin-right:10px" onclick= approve(green , ${o})></i>
+                   <i class="fa-solid fa-circle-xmark" style="color: red;" onclick= approve(red , ${o})></i>
+                   </span >
+                       </td>
                 </tr>`;
         });
+            
+
         tableHTML += `</tbody></table>`;
-        contentArea.innerHTML = tableSnapshot.empty ? "<p>No orders found.</p>" : tableHTML;
+       console.log(tableHTML);
+        
+        contentArea.innerHTML = tableHTML.empty ? "<p>No orders found.</p>" : tableHTML;
     } catch (e) { 
         console.error(e);
         contentArea.innerHTML = "<p>Error loading orders. Make sure 'timestamp' exists in your database.</p>";
@@ -271,7 +310,3 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 // دوال إغلاق المودال
-window.closeModals = () => {
-    document.getElementById("productModal").style.display = "none";
-    document.getElementById("categoryModal").style.display = "none";
-};
