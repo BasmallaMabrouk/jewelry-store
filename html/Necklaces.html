@@ -22,7 +22,7 @@
         }
         .stock-number { font-weight: bold; color: #705C49; }
 
-        /* --- ستايل الـ Toast (الرسالة التنبيهية) --- */
+        /* --- ستايل الـ Toast --- */
         #toast {
             visibility: hidden;
             min-width: 250px;
@@ -43,6 +43,20 @@
         #toast.show {
             visibility: visible;
             animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        /* ستايل ملصق نفاذ الكمية */
+        .out-of-stock-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            z-index: 10;
+            font-size: 0.8rem;
         }
 
         @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
@@ -90,7 +104,6 @@
         import { db } from "../js/CDNFirebase.js";
         import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // 1. دالة إظهار الـ Toast
         function showToast(message) {
             const toast = document.getElementById("toast");
             toast.innerText = message;
@@ -98,7 +111,6 @@
             setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
-        // 2. دالة الإضافة للكارت (بدون تحويل الصفحة)
         function quickAdd(id, title, price, image, stock) {
             let cart = JSON.parse(localStorage.getItem('myCart')) || [];
             const existingIndex = cart.findIndex(item => item.id === id);
@@ -111,14 +123,12 @@
                     return;
                 }
             } else {
-                cart.push({
-                    id,
-                    title,
-                    price,
-                    image,
-                    quantity: 1,
-                    maxStock: stock
-                });
+                if (stock > 0) {
+                    cart.push({ id, title, price, image, quantity: 1, maxStock: stock });
+                } else {
+                    showToast("Out of stock!");
+                    return;
+                }
             }
 
             localStorage.setItem('myCart', JSON.stringify(cart));
@@ -126,15 +136,14 @@
         }
         window.quickAdd = quickAdd;
 
-        // 3. جلب البيانات من Firebase (فقط قسم الـ necklace)
         async function getNecklacesFromFirebase() {
             try {
                 const snapshot = await getDocs(collection(db, "products"));
                 const items = [];
                 snapshot.forEach(doc => {
                     const data = doc.data();
-                    // تأكدي أن كلمة necklace مطابقة لما تدخلينه في لوحة الأدمن
-                    if (data.category && data.category.toLowerCase() === "necklace") {
+                    // فحص مرن لكلمة necklace
+                    if (data.category && data.category.toLowerCase().includes("necklace")) {
                         items.push({ id: doc.id, ...data });
                     }
                 });
@@ -145,7 +154,6 @@
             }
         }
 
-        // 4. بناء الكروت وعرضها
         function renderProducts(products) {
             const grid = document.getElementById("product-grid");
             if (!grid) return;
@@ -157,14 +165,17 @@
             }
 
             products.forEach(product => {
+                const stock = product.stock_quantity || product.stock || 0;
+                const isOutOfStock = stock <= 0;
                 const mainImg = product.images?.[0] || product.image || '';
                 const hoverImg = product.images?.[1] || mainImg;
 
                 const cardHTML = `
-                <div class="product-card">
+                <div class="product-card" style="${isOutOfStock ? 'opacity: 0.7;' : ''}">
                     <div class="product-img-box">
                         <img src="${mainImg}" class="img-main">
                         <img src="${hoverImg}" class="img-hover">
+                        ${isOutOfStock ? '<div class="out-of-stock-badge">Sold Out</div>' : ''}
                     </div>
                     <div class="product-info">
                         <h3>${product.title}</h3>
@@ -173,12 +184,15 @@
                             <span class="rating">⭐ ${product.rating || '5.0'}</span>
                         </div>
                         <p class="stock-label">
-                            Available: <span class="stock-number">${product.stock_quantity || product.stock || 0}</span>
+                            ${isOutOfStock ? 
+                                '<span style="color:#e74c3c; font-weight:bold;">Out of Stock</span>' : 
+                                `Available: <span class="stock-number">${stock}</span>`}
                         </p>
                         <div class="product-buttons">
                             <button class="add-to-cart-btn" 
-                                onclick="quickAdd('${product.id}', '${product.title}', ${product.price}, '${mainImg}', ${product.stock_quantity || product.stock})">
-                                Add to Cart
+                                ${isOutOfStock ? 'disabled style="background:#ccc; cursor:not-allowed;"' : ''} 
+                                onclick="quickAdd('${product.id}', '${product.title}', ${product.price}, '${mainImg}', ${stock})">
+                                ${isOutOfStock ? 'Finished' : 'Add to Cart'}
                             </button>
                             <a href="./details.html?id=${product.id}">
                                 <button class="details-btn">View Details</button>
@@ -190,7 +204,6 @@
             });
         }
 
-        // تشغيل الصفحة
         (async function () {
             const necklaces = await getNecklacesFromFirebase();
             renderProducts(necklaces);

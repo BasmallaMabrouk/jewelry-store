@@ -35,13 +35,18 @@
             padding: 8px;
             cursor: pointer;
             transition: 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
         }
         .details-btn:hover {
             background-color: #8D7B68;
             color: white;
         }
 
-        /* --- ستايل الـ Toast (رسالة الإضافة بنجاح) --- */
+        /* --- Toast Style --- */
         #toast {
             visibility: hidden;
             min-width: 250px;
@@ -62,6 +67,20 @@
         #toast.show {
             visibility: visible;
             animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        /* ستايل Sold Out */
+        .out-of-stock-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            z-index: 10;
+            font-size: 0.8rem;
         }
 
         @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
@@ -107,7 +126,7 @@
         import { db } from "../js/CDNFirebase.js";
         import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // 1. دالة إظهار الـ Toast
+        // 1. دالة التنبيه
         function showToast(message) {
             const toast = document.getElementById("toast");
             toast.innerText = message;
@@ -115,7 +134,7 @@
             setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
-        // 2. دالة الإضافة للكارت (بدون تحويل الصفحة)
+        // 2. دالة الإضافة مع فحص المخزون
         function quickAdd(id, title, price, image, stock) {
             let cart = JSON.parse(localStorage.getItem('myCart')) || [];
             const existingIndex = cart.findIndex(item => item.id === id);
@@ -128,7 +147,12 @@
                     return;
                 }
             } else {
-                cart.push({ id, title, price, image, quantity: 1, maxStock: stock });
+                if (stock > 0) {
+                    cart.push({ id, title, price, image, quantity: 1, maxStock: stock });
+                } else {
+                    showToast("Out of stock!");
+                    return;
+                }
             }
 
             localStorage.setItem('myCart', JSON.stringify(cart));
@@ -136,7 +160,7 @@
         }
         window.quickAdd = quickAdd;
 
-        // 3. دالة جلب البيانات من Firebase
+        // 3. جلب كل المنتجات
         async function getProductsFromFirebase() {
             try {
                 const snapshot = await getDocs(collection(db, "products"));
@@ -151,17 +175,20 @@
             }
         }
 
-        // 4. دالة بناء الكارت (الـ Template)
+        // 4. بناء كرت المنتج (Template) مع فحص نفاذ الكمية
         function createCardHTML(p) {
             if (!p) return '';
+            const stock = p.stock_quantity || p.stock || 0;
+            const isOutOfStock = stock <= 0;
             const mImg = (p.images && p.images[0]) ? p.images[0] : (p.image || '');
             const hImg = (p.images && p.images[1]) ? p.images[1] : mImg;
 
             return `
-            <div class="product-card">
+            <div class="product-card" style="${isOutOfStock ? 'opacity: 0.7;' : ''}">
                 <div class="product-img-box">
                     <img src="${mImg}" class="img-main">
                     <img src="${hImg}" class="img-hover">
+                    ${isOutOfStock ? '<div class="out-of-stock-badge">Sold Out</div>' : ''}
                 </div>
                 <div class="product-info">
                     <h3>${p.title}</h3>
@@ -169,27 +196,30 @@
                         <span class="price">$${p.price}</span>
                         <span class="rating">⭐ ${p.rating || '5.0'}</span>
                     </div>
-                    <p class="stock-label">Stock: <span class="stock-number">${p.stock_quantity || p.stock || 0}</span></p>
+                    <p class="stock-label">
+                        ${isOutOfStock ? 
+                            '<span style="color:#e74c3c; font-weight:bold;">Out of Stock</span>' : 
+                            `Stock: <span class="stock-number">${stock}</span>`}
+                    </p>
                     <div class="product-buttons">
-                        <button class="add-to-cart-btn" onclick="quickAdd('${p.id}', '${p.title}', ${p.price}, '${mImg}', ${p.stock_quantity || p.stock})">
-                            Add to Cart
+                        <button class="add-to-cart-btn" 
+                            ${isOutOfStock ? 'disabled style="background:#ccc; cursor:not-allowed;"' : ''} 
+                            onclick="quickAdd('${p.id}', '${p.title}', ${p.price}, '${mImg}', ${stock})">
+                            ${isOutOfStock ? 'Sold Out' : 'Add to Cart'}
                         </button>
-                        <a href="./details.html?id=${p.id}">
-                            <button class="details-btn">View Details</button>
-                        </a>
+                        <a href="./details.html?id=${p.id}" class="details-btn">View Details</a>
                     </div>
                 </div>
             </div>`;
         }
 
-        // 5. دالة العرض الرئيسية (تم تبسيطها لتعرض كل المنتجات بشكل سليم)
+        // 5. العرض
         function renderProducts(products) {
             const grid = document.getElementById('product-grid');
             if (!grid) return;
             grid.innerHTML = products.map(p => createCardHTML(p)).join('');
         }
 
-        // تشغيل العملية
         (async function init() {
             const products = await getProductsFromFirebase();
             if (products.length > 0) {

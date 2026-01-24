@@ -78,15 +78,20 @@
     <div class="modal-content">
         <span onclick="closeModals()" style="float:right; cursor:pointer; font-size:24px;">&times;</span>
         <h3 id="modalTitle">Product Details</h3>
-        <form id="productForm">
-            <input type="hidden" id="pId"> <input type="text" id="pTitle" placeholder="Product Name" required>
-            <input type="text" id="pCategory" placeholder="Category (necklace, ring...)" required>
-            <input type="number" id="pPrice" placeholder="Price ($)" required>
-            <input type="number" id="pStock" placeholder="Stock Quantity" required>
-            <input type="text" id="pImage1" placeholder="Main Image URL" required>
-            <textarea id="pDesc" placeholder="Product Description"></textarea>
-            <button type="submit" class="add-new-btn" style="width:100%">Save Product</button>
-        </form>
+       <form id="productForm">
+    <input type="hidden" id="pId">
+    <input type="hidden" id="pOldImageUrl"> <input type="text" id="pTitle" placeholder="Product Name" required>
+    <input type="text" id="pCategory" placeholder="Category" required>
+    <input type="number" id="pPrice" placeholder="Price ($)" required>
+    <input type="number" id="pStock" placeholder="Stock" required>
+    
+    <label style="display:block; margin-top:10px; font-size:0.8rem;">Product Image (Upload from PC):</label>
+    <input type="file" id="pImageFile" accept="image/*">
+    <div id="pUploadStatus" style="display:none; color: brown; font-size: 0.8rem;">Uploading Image...</div>
+
+    <textarea id="pDesc" placeholder="Description"></textarea>
+    <button type="submit" class="add-new-btn" style="width:100%">Save Product</button>
+</form>
     </div>
 </div>
 

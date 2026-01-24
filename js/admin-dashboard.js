@@ -311,7 +311,19 @@ async function renderOrders() {
         contentArea.innerHTML = "<p>Error loading orders. Make sure 'timestamp' exists in your database.</p>";
     }
 }
+async function handleReject(orderId, items) {
+    // 1. تحديث حالة الطلب لـ Rejected
+    await updateDoc(doc(db, "orders", orderId), { status: "Rejected" });
 
+    // 2. إعادة الكميات للمخزون
+    for (const item of items) {
+        const productRef = doc(db, "products", item.id);
+        await updateDoc(productRef, {
+            stock_quantity: increment(item.quantity) // زيادة المخزون مجدداً
+        });
+    }
+    alert("Order Rejected and Stock Returned!");
+}
 // --- 5. التحقق من صلاحية الأدمن عند الدخول ---
 onAuthStateChanged(auth, async (user) => {
     if (user) {

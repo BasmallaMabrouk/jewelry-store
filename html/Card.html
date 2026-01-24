@@ -115,135 +115,108 @@
         </div>
     </main>
 
-    <script type="module">
-        import { db, auth } from "../js/CDNFirebase.js";
-        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    <!-- /* استبدلي جزء الـ <script type="module"> في ملف Card.html بهذا */ -->
+<script type="module">
+    import { db, auth } from "../js/CDNFirebase.js";
+    import { collection, addDoc, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-        // 1. دالة عرض الكارت
-        function displayCart() {
-            const cart = JSON.parse(localStorage.getItem('myCart')) || [];
-            const list = document.getElementById('cart-items-list');
-            let total = 0;
+    function displayCart() {
+        const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        const list = document.getElementById('cart-items-list');
+        let total = 0;
 
-            if (cart.length === 0) {
-                list.innerHTML = "<p style='text-align:center; padding:50px;'>Your bag is empty.</p>";
-                document.getElementById('cart-total-price').innerText = "Total: $0";
-                return;
-            }
+        if (cart.length === 0) {
+            list.innerHTML = "<p style='text-align:center; padding:50px;'>Your bag is empty.</p>";
+            document.getElementById('cart-total-price').innerText = "Total: $0";
+            return;
+        }
 
-            list.innerHTML = "";
-            cart.forEach((item, index) => {
-                total += item.price * item.quantity;
-                list.innerHTML += `
-                <div class="cart-item">
-                    <img src="${item.image}">
-                    <div class="cart-item-info">
-                        <h4>${item.title}</h4>
-                        <p>$${item.price}</p>
-                        <div class="cart-qty-controls">
-                            <button class="qty-minus" data-index="${index}">-</button>
-                            <span>${item.quantity}</span>
-                            <button class="qty-plus" data-index="${index}">+</button>
-                        </div>
+        list.innerHTML = "";
+        cart.forEach((item, index) => {
+            total += item.price * item.quantity;
+            list.innerHTML += `
+            <div class="cart-item">
+                <img src="${item.image}">
+                <div class="cart-item-info">
+                    <h4>${item.title}</h4>
+                    <p>$${item.price} x ${item.quantity}</p>
+                    <div class="cart-qty-controls">
+                        <button onclick="window.updateQty(${index}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="window.updateQty(${index}, 1)">+</button>
                     </div>
-                    <p><strong>$${(item.price * item.quantity).toFixed(2)}</strong></p>
-                    <button class="remove-btn" data-index="${index}">Remove</button>
-                </div>`;
-            });
+                </div>
+                <button class="remove-btn" onclick="window.removeItem(${index})">Remove</button>
+            </div>`;
+        });
+        document.getElementById('cart-total-price').innerText = "Total: $" + total.toFixed(2);
+    }
 
-            document.getElementById('cart-total-price').innerText = "Total: $" + total.toFixed(2);
-            attachEventListeners();
-        }
-
-        // 2. دالة التحكم في الكمية والحذف
-        function attachEventListeners() {
-            document.querySelectorAll('.qty-minus').forEach(btn => {
-                btn.onclick = () => updateQty(btn.dataset.index, -1);
-            });
-            document.querySelectorAll('.qty-plus').forEach(btn => {
-                btn.onclick = () => updateQty(btn.dataset.index, 1);
-            });
-            document.querySelectorAll('.remove-btn').forEach(btn => {
-                btn.onclick = () => removeItem(btn.dataset.index);
-            });
-        }
-
-        function updateQty(index, change) {
-            let cart = JSON.parse(localStorage.getItem('myCart'));
-            let item = cart[index];
-            let newQty = item.quantity + change;
-            if (newQty >= 1 && newQty <= (item.maxStock || 100)) {
-                item.quantity = newQty;
-                localStorage.setItem('myCart', JSON.stringify(cart));
-                displayCart();
-            }
-        }
-
-        function removeItem(index) {
-            let cart = JSON.parse(localStorage.getItem('myCart'));
-            cart.splice(index, 1);
+    window.updateQty = (index, change) => {
+        let cart = JSON.parse(localStorage.getItem('myCart'));
+        let newQty = cart[index].quantity + change;
+        if (newQty >= 1 && newQty <= (cart[index].maxStock || 100)) {
+            cart[index].quantity = newQty;
             localStorage.setItem('myCart', JSON.stringify(cart));
             displayCart();
+        } else if (newQty > cart[index].maxStock) {
+            alert("No more stock available!");
+        }
+    };
+
+    window.removeItem = (index) => {
+        let cart = JSON.parse(localStorage.getItem('myCart'));
+        cart.splice(index, 1);
+        localStorage.setItem('myCart', JSON.stringify(cart));
+        displayCart();
+    };
+
+    async function checkout() {
+        if (!auth.currentUser) {
+            alert("🔒 Please login first!");
+            window.location.href = "./Login.html";
+            return;
         }
 
-        // 3. دالة التشيك أوت (الوحيدة والمحدثة)
-        async function checkout() {
-            // التحقق الصارم من تسجيل الدخول
-            if (!auth.currentUser) {
-                alert("🔒 You must be logged in to place an order.");
-                window.location.href = "./Login.html";
-                return;
+        const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        if (cart.length === 0) return;
+
+        const btn = document.getElementById('checkout-btn');
+        btn.disabled = true;
+        btn.innerText = "Updating Stock...";
+
+        try {
+            // 1. تحديث المخزون في Firebase لكل منتج
+            for (const item of cart) {
+                const productRef = doc(db, "products", item.id);
+                await updateDoc(productRef, {
+                    stock_quantity: increment(-item.quantity)
+                });
             }
 
-            const cart = JSON.parse(localStorage.getItem('myCart')) || [];
-            if (cart.length === 0) {
-                alert("Your cart is empty!");
-                return;
-            }
-
+            // 2. إنشاء الطلب للأدمن
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const btn = document.getElementById('checkout-btn');
-            
-            btn.disabled = true;
-            btn.innerText = "Processing Your Order...";
-
-            const orderData = {
+            await addDoc(collection(db, "orders"), {
                 customerEmail: auth.currentUser.email,
-                customerUid: auth.currentUser.uid,
                 items: cart,
                 totalAmount: total.toFixed(2),
                 status: "Pending",
                 timestamp: new Date()
-            };
+            });
 
-            try {
-                await addDoc(collection(db, "orders"), orderData);
-                alert("🎉 Order Placed Successfully!");
-                localStorage.removeItem('myCart');
-                window.location.href = "./Home.html";
-            } catch (error) {
-                console.error("Order Error:", error);
-                alert("Failed to place order. Please try again.");
-                btn.disabled = false;
-                btn.innerText = "Proceed to Checkout";
-            }
+            alert("🎉 Order Successful!");
+            localStorage.removeItem('myCart');
+            window.location.href = "./Home.html";
+
+        } catch (error) {
+            alert("Error: " + error.message);
+            btn.disabled = false;
         }
+    }
 
-        // ربط الزر بالدالة
-        document.getElementById('checkout-btn').onclick = checkout;
-
-        // تنفيذ عرض الكارت عند تحميل الصفحة
-        displayCart();
-
-        // للتأكد من حالة المستخدم فور التحميل
-        onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                console.log("User is not logged in");
-            } else {
-                console.log("Logged in as:", user.email);
-            }
-        });
-    </script>
+    document.getElementById('checkout-btn').onclick = checkout;
+    displayCart();
+</script>
 </body>
 </html>
