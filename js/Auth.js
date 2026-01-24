@@ -38,10 +38,7 @@ export async function loginUser(email, password) {
 
             if (userData.role == "admin") {
                 alert("Welcome Admin!");
-
-              
-
-                window.location.href = "AdminDashboard.html";
+                window.location.href = "Home.html";
 
             } else {
                 alert("Login Successful!");
