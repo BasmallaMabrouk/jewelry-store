@@ -138,89 +138,104 @@ function addToCart(product) {
         }
     }
 </script> -->
-    <script type="module">
-        import { db } from "../js/CDNFirebase.js";
-        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+   <script type="module">
+    import { db } from "../js/CDNFirebase.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('id');
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
 
-        async function loadProduct() {
-            if (!productId) return;
+    async function loadProduct() {
+        if (!productId) return;
 
-            const docRef = doc(db, "products", productId);
-            const snap = await getDoc(docRef);
+        const docRef = doc(db, "products", productId);
+        const snap = await getDoc(docRef);
 
-            if (!snap.exists()) {
-                document.getElementById("details-content").innerHTML = "<p>Product not found.</p>";
-                return;
-            }
+        if (!snap.exists()) {
+            document.getElementById("details-content").innerHTML = "<p>Product not found.</p>";
+            return;
+        }
 
-            const product = snap.data();
+        const product = snap.data();
+        const img1 = product.images?.[0] || product.image || "";
+        const img2 = product.images?.[1] || img1;
 
-            const img1 = product.images?.[0] || product.image || "";
-            const img2 = product.images?.[1] || img1;
-
-            document.getElementById('details-content').innerHTML = `
-        <div class="details-left">
-            <div class="details-img-wrapper">
-                <img src="${img1}" class="details-img-main">
-                <img src="${img2}" class="details-img-hover">
-            </div>
-        </div>
-
-        <div class="details-right">
-            <h1 class="prod-title">${product.title}</h1>
-            <p class="details-price">$${product.price}</p>
-            <hr>
-            <p class="description">${product.description || ''}</p>
-
-            <div class="purchase-section">
-                <label>Quantity:</label>
-                <div class="quantity-controls">
-                    <button onclick="changeQty(-1)">-</button>
-                    <input type="number" id="qty" value="1" min="1" max="${product.stock_quantity || 1}">
-                    <button onclick="changeQty(1)">+</button>
+        document.getElementById('details-content').innerHTML = `
+            <div class="details-left">
+                <div class="details-img-wrapper">
+                    <img src="${img1}" class="details-img-main">
+                    <img src="${img2}" class="details-img-hover">
                 </div>
-                <p class="stock-status">Available Stock: <strong>${product.stock_quantity || 0}</strong></p>
-                <button class="buy-btn" onclick='addToCart({
-                    id: "${productId}",
-                    title: "${product.title}",
-                    price: ${product.price},
-                    image: "${img1}"
-                })'>Add to Cart</button>
             </div>
-        </div>
-    `;
+
+            <div class="details-right">
+                <h1 class="prod-title">${product.title}</h1>
+                <p class="details-price">$${product.price}</p>
+                <hr>
+                <p class="description">${product.description || ''}</p>
+
+                <div class="purchase-section">
+                    <label>Quantity:</label>
+                    <div class="quantity-controls">
+                        <button onclick="changeQty(-1)">-</button>
+                        <input type="number" id="qty" value="1" min="1" max="${product.stock_quantity || 1}">
+                        <button onclick="changeQty(1)">+</button>
+                    </div>
+                    <p class="stock-status">Available Stock: <strong>${product.stock_quantity || 0}</strong></p>
+                    <button class="buy-btn" onclick='addToCart({
+                        id: "${productId}",
+                        title: "${product.title}",
+                        price: ${product.price},
+                        image: "${img1}",
+                        stock: ${product.stock_quantity || 0}
+                    })'>Add to Cart</button>
+                </div>
+            </div>
+        `;
+    }
+
+    // --- التعديل هنا لجعل الدوال تعمل مع onclick ---
+
+    window.changeQty = function(amount) {
+        const input = document.getElementById('qty');
+        if(!input) return;
+        let val = parseInt(input.value) + amount;
+        if (val >= 1 && val <= parseInt(input.max)) {
+            input.value = val;
         }
+    };
 
-        loadProduct();
+    window.addToCart = function(product) {
+        const qtyInput = document.getElementById('qty');
+        const qty = parseInt(qtyInput.value);
+        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
 
-        function changeQty(amount) {
-            const input = document.getElementById('qty');
-            let val = parseInt(input.value) + amount;
-            if (val >= 1 && val <= input.max) {
-                input.value = val;
-            }
-        }
+        const existingIndex = cart.findIndex(item => item.id === product.id);
 
-        function addToCart(product) {
-            const qty = parseInt(document.getElementById('qty').value);
-            let cart = JSON.parse(localStorage.getItem('myCart')) || [];
-
-            const existingIndex = cart.findIndex(item => item.id === product.id);
-
-            if (existingIndex > -1) {
+        if (existingIndex > -1) {
+            // التحقق من المخزون قبل الإضافة
+            if (cart[existingIndex].quantity + qty <= product.stock) {
                 cart[existingIndex].quantity += qty;
             } else {
-                cart.push({ ...product, quantity: qty });
+                alert("Sorry, not enough stock!");
+                return;
             }
-
-            localStorage.setItem('myCart', JSON.stringify(cart));
-            alert("Added to cart successfully!");
+        } else {
+            cart.push({ 
+                id: product.id, 
+                title: product.title, 
+                price: product.price, 
+                image: product.image, 
+                quantity: qty,
+                maxStock: product.stock 
+            });
         }
-    </script>
 
+        localStorage.setItem('myCart', JSON.stringify(cart));
+        alert("Added to cart successfully! ✨");
+    };
+    loadProduct();
+</script>
 </body>
 
 </html>
