@@ -1,1 +1,1 @@
-# jewelry-store
+# jewelry-store V1
